@@ -109,7 +109,3 @@ L'équipe technique compte sur vous. L'entreprise compte sur vous. Et quelque pa
 *To be a CTO*, finalement, c'est ça : accepter cette responsabilité, embrasser cette complexité, et prendre plaisir à transformer des idées en réalité, avec des équipes humaines, grâce à la technologie.
 
 Welcome to the club. 🚀
-
----
-
-*"Le meilleur moment pour devenir CTO, c'était il y a 10 ans. Le deuxième meilleur moment, c'est maintenant."*
