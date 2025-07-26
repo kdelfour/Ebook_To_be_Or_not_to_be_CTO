@@ -176,7 +176,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - **Cas pratiques :** Erreurs classiques de scaling
 - **Resources :** Patterns de scaling éprouvés
 
-### **Partie 5 : Se développer comme CTO** (30 pages)
+### 🚧 WIP **Partie 5 : Se développer comme CTO** (30 pages) 
 
 #### Chapitre 15 : Développement personnel et leadership (15 pages)
 - **Objectif :** Grandir dans son rôle
@@ -211,9 +211,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 ### **Pour les co-auteurs**
 
 #### **Contribution attendue**
-- **Minimum :** 1 chapitre complet (10-20 pages)
-- **Optimal :** 1-2 chapitres + retours sur autres chapitres
-- **Bonus :** Cas pratiques, témoignages, ressources
+- Cas pratiques, témoignages, ressources, et plus si vous le voulez.
 
 #### **Format de contribution**
 - Texte en Markdown
@@ -221,22 +219,9 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - Exemples concrets et anonymisés
 - Sources et ressources citées
 
-#### **Planning collaboratif**
-1. **Phase 1** (1-2 mois) : Répartition des chapitres
-2. **Phase 2** (3-4 mois) : Rédaction individuelle  
-3. **Phase 3** (1 mois) : Relecture croisée et harmonisation
-4. **Phase 4** (1 mois) : Finalisation et éditing
-
 #### **Outils de collaboration**
 - Git/GitHub pour les versions
-- Slack/Discord pour la communication
-- Calls mensuels pour synchronisation
-
-### **Critères de sélection des co-auteurs**
-- Expérience CTO minimum 2-3 ans
-- Diversité des contextes (startup, scale-up, corporate)
-- Disponibilité et motivation pour le projet
-- Complémentarité des expertises
+- Slack/Discord pour la communication (pas encore disponible)
 
 ### **Ligne éditoriale**
 - **Ton :** Bienveillant mais honnête, avec de l'humour
@@ -258,21 +243,11 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - Templates de documents (vision tech, budget, 1-on-1)
 - Checklists opérationnelles
 - Liens vers outils et ressources
-- Accès à une communauté de CTOs
 
 ### **Impact espéré**
 - Réduire la courbe d'apprentissage des nouveaux CTOs
 - Créer une référence française sur le rôle
 - Développer une communauté de CTOs bienveillants
 - Inspirer la prochaine génération de leaders tech
-
----
-
-## 📝 Next Steps
-
-1. **Validation du plan** par les premiers contributeurs
-2. **Recrutement** des co-auteurs volontaires
-3. **Répartition** des chapitres selon les expertises
-4. **Lancement** de la phase de rédaction collaborative
 
 *"Parce qu'être CTO, ça ne s'improvise pas... mais ça se partage !"* 😉
