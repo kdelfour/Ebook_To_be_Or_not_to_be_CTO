@@ -43,5 +43,4 @@ Parce qu'au final, être CTO, c'est un sacré défi. Mais c'est aussi un métier
 Bonne lecture, et surtout... bon courage ! 😉
 
 *Kevin Delfour  
-Co-fondateur CTO de Lyon  
-Founding Engineer chez JOBO Interim*
+Co-fondateur CTO de Lyon
