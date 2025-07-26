@@ -2,12 +2,12 @@
 
 ## 📖 Informations générales
 
-**Public cible :** Développeurs seniors aspirant au poste de CTO, nouveaux CTOs, entrepreneurs
-**Objectif :** Guide pratique avec retours d'expérience, manuel de survie inspirant avec tips concrets
-**Niveau :** Débutant à intermédiaire
-**Ton :** Inspirant, conversationnel et légèrement humoristique
-**Longueur :** ~250 pages (livre de poche standard)
-**Contexte :** France, startups, scale-ups et grandes entreprises
+- **Public cible :** Développeurs seniors aspirant au poste de CTO, nouveaux CTOs, entrepreneurs
+- **Objectif :** Guide pratique avec retours d'expérience, manuel de survie inspirant avec tips concrets
+- **Niveau :** Débutant à intermédiaire
+- **Ton :** Inspirant, conversationnel et légèrement humoristique
+- **Longueur :** ~250 pages (livre de poche standard)
+- **Contexte :** France, startups, scale-ups et grandes entreprises
 
 ---
 
@@ -19,10 +19,11 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 
 ## 📚 Structure proposée
 
-### **Préface** (2-3 pages)
-### Introduction
+### ✅ **Préface** (2-3 pages)
+### 🚧 WIP : Présentation des co-auteurs 
+### ✅ Introduction
 
-### **Partie 1 : Devenir CTO** (60 pages)
+### ✅ **Partie 1 : Devenir CTO** (60 pages)
 
 #### Chapitre 1 : Le rôle de CTO démystifié (15 pages)
 - **Objectif :** Clarifier ce qu'est vraiment un CTO
@@ -60,7 +61,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - **Outils :** Template de vision technique
 - **Resources :** Exemples de visions tech inspirantes
 
-### **Partie 2 : Management et Leadership** (70 pages)
+### ✅ **Partie 2 : Management et Leadership** (70 pages)
 
 #### Chapitre 5 : Recruter et fidéliser son équipe (20 pages)
 - **Objectif :** Maîtriser l'art du recrutement tech
@@ -106,7 +107,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - **Cas pratiques :** Scenarios de crise réels
 - **Tips :** "SOS : que faire quand tout va mal"
 
-### **Partie 3 : Stratégie et Technique** (60 pages)
+### ✅ **Partie 3 : Stratégie et Technique** (60 pages)
 
 #### Chapitre 9 : Architecture et choix techniques (20 pages)
 - **Objectif :** Prendre les bonnes décisions techniques
@@ -142,7 +143,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
   - KPIs techniques et business
 - **Cas pratiques :** Arbitrages tech vs product
 
-### **Partie 4 : Opérationnel et Croissance** (50 pages)
+### ✅ **Partie 4 : Opérationnel et Croissance** (50 pages)
 
 #### Chapitre 12 : Budget et ressources (15 pages)
 - **Objectif :** Gérer le budget tech comme un pro
@@ -198,7 +199,7 @@ Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ce
 - **Outils :** Templates de présentation
 - **Cas pratiques :** Situations de communication critiques
 
-### **Annexes** (8 pages)
+### 🚧 WIP: **Annexes** (8 pages)
 - Glossaire des termes techniques et business
 - Ressources recommandées (livres, podcasts, outils)
 - Templates et checklists téléchargeables
