@@ -2,7 +2,7 @@
 
 > **Objectif :** Grandir dans son rôle de CTO
 
-Devenir CTO, c'est une chose. Le rester et exceller dans ce rôle, c'en est une autre. Parce que contrairement à ce qu'on pourrait croire, obtenir le titre n'est que le début du voyage.
+Devenir CTO, c'est une chose. Le rester et s'améliorer, c'en est une autre. Parce que contrairement à ce qu'on pourrait croire, obtenir le titre n'est que le début du voyage.
 
 La vérité, c'est que la plupart des CTOs stagnent après leurs premiers mois. Ils se contentent de gérer le quotidien, de résoudre les urgences, et d'optimiser l'existant. Mais les meilleurs ? Ils comprennent que leur rôle évolue constamment, et qu'eux aussi doivent évoluer avec.
 
