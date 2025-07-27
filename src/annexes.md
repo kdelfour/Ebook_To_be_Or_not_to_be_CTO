@@ -18,11 +18,6 @@
 
 **MTTR** : Mean Time To Recovery - Temps moyen de résolution d'un incident.
 
-**P95/P99** : 95e/99e percentile - Métrique indiquant que X% des requêtes sont plus rapides que cette valeur.
-
-**Saga Pattern** : Gestion des transactions distribuées en décomposant en étapes avec compensation possible.
-
-**Strangler Fig Pattern** : Migration progressive d'un ancien système vers un nouveau en routant graduellement le trafic.
 
 **Technical Debt** : Coût futur du refactoring nécessaire suite à des choix techniques sous-optimaux.
 
@@ -57,49 +52,27 @@
 ### Livres essentiels pour CTOs
 
 **Leadership et Management :**
-- "The Manager's Path" - Camille Fournier
-- "An Elegant Puzzle" - Will Larson  
-- "The First 90 Days" - Michael Watkins
-- "Radical Candor" - Kim Scott
-- "Team Topologies" - Matthew Skelton
+- 
 
 **Architecture et Technique :**
-- "Building Microservices" - Sam Newman
-- "Designing Data-Intensive Applications" - Martin Kleppmann
-- "Site Reliability Engineering" - Google SRE Team
-- "Clean Architecture" - Robert C. Martin
-- "Domain-Driven Design" - Eric Evans
+- 
 
 **Business et Stratégie :**
-- "Good Strategy Bad Strategy" - Richard Rumelt
-- "The Lean Startup" - Eric Ries
-- "Crossing the Chasm" - Geoffrey Moore
-- "Blitzscaling" - Reid Hoffman
-- "The Innovator's Dilemma" - Clayton Christensen
+- 
 
 **Communication :**
-- "Made to Stick" - Chip Heath & Dan Heath
-- "The Pyramid Principle" - Barbara Minto
-- "Crucial Conversations" - Kerry Patterson
+- 
 
 ### Podcasts incontournables
 
 **Leadership Tech :**
-- "Engineering Management" - Marcus Blankenship
-- "The Changelog" - Adam Stacoviak & Jerod Santo
-- "Software Engineering Daily" - Jeff Meyerson
-- "CTO Think" - Randy Burgess
+- 
 
 **Business et Startup :**
-- "Masters of Scale" - Reid Hoffman
-- "How I Built This" - Guy Raz
-- "The Tim Ferriss Show" - Tim Ferriss
-- "Invest Like the Best" - Patrick O'Shaughnessy
+- 
 
 **Tech et Innovation :**
-- "Acquired" - Ben Gilbert & David Rosenthal
-- "Andreessen Horowitz Podcast" - a16z
-- "This Week in Startups" - Jason Calacanis
+- 
 
 ### Outils par catégorie
 
@@ -136,24 +109,13 @@
 ### Communautés et Réseaux
 
 **Communautés CTO Françaises :**
-- **CTO Club France** : Réseau des CTOs français
-- **NUMA** : Événements et formations pour leaders tech
-- **France Digitale** : Association des startups françaises
-- **Les Entreprepreneuses** : Réseau mixte entrepreneuriat/tech
+- **CTO de Lyon** : Réseau des CTOs à Lyon
 
 **Communautés Internationales :**
-- **CTO Forum** : Communauté globale de CTOs
-- **LeadDev** : Conférences et communauté pour engineering leaders
-- **Rands Leadership Slack** : Slack communautaire très actif
-- **Engineering Managers** : Groupe LinkedIn actif
+- 
 
 **Conférences Incontournables :**
-- **Devoxx France** : Conférence développeurs (Paris)
-- **Web Summit** : Tech conference (Lisbonne)
-- **AWS re:Invent** : Conférence AWS (Las Vegas)
-- **Google Cloud Next** : Conférence Google Cloud
-- **DockerCon** : Conférence Docker et containers
-- **KubeCon** : Conférence Kubernetes
+- 
 
 **Plateformes d'Apprentissage :**
 - **Coursera/edX** : Cours universitaires en ligne
@@ -449,15 +411,10 @@
 ### Formations Executives Recommandées
 
 **Leadership :**
-- **Stanford Executive Leadership Development** (1 semaine)
-- **MIT Sloan Executive Program** (3 jours)
-- **INSEAD Advanced Management Program** (2 semaines)
-- **Harvard Business School General Management** (8 semaines)
+- 
 
 **Tech Leadership :**
-- **Kellogg-Northwestern CTO Program** (3 jours)
-- **Wharton Executive Development Program** (5 jours)
-- **UC Berkeley Executive Leadership** (1 semaine)
+- 
 
 ### Certifications Utiles
 
