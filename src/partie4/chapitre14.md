@@ -131,29 +131,24 @@ Le scaling, c'est l'art de grandir sans tout casser. Et spoiler alert : 90% des 
 **1. Stateless Services**
 Les services ne stockent pas d'état, ce qui permet le scaling horizontal facile.
 
-```javascript
-// ❌ Stateful - difficile à scaler
-class UserService {
-  constructor() {
-    this.userSessions = new Map(); // État en mémoire
-  }
-  
-  login(userId) {
-    this.userSessions.set(userId, { timestamp: Date.now() });
-  }
-}
+**Principe :** Chaque instance de service doit pouvoir traiter n'importe quelle requête sans dépendre d'informations stockées localement.
 
-// ✅ Stateless - facilement scalable
-class UserService {
-  constructor(sessionStore) {
-    this.sessionStore = sessionStore; // Redis, DB externe
-  }
-  
-  login(userId) {
-    this.sessionStore.set(userId, { timestamp: Date.now() });
-  }
-}
-```
+**❌ Approche stateful (problématique) :**
+- Sessions utilisateur stockées en mémoire de l'application
+- Cache applicatif local non partagé
+- Compteurs et métriques en variables globales
+- État de traitement maintenu côté serveur
+
+**✅ Approche stateless (scalable) :**
+- Sessions externalisées (Redis, base de données)
+- Cache distribué partagé entre instances
+- Métriques envoyées vers un système centralisé
+- État reconstruit à chaque requête ou stocké externalement
+
+**Questions décisionnelles pour votre équipe :**
+- Où stockons-nous actuellement l'état de nos services ?
+- Quelles données peuvent être recalculées vs. cachées ?
+- Quel système externe utiliser pour l'état partagé ?
 
 **2. Database per Service**
 Éviter la base de données monolithique partagée.
@@ -176,27 +171,19 @@ Protection contre les cascades de pannes.
 - **Phase 2 :** Split par fonctionnalité (microfrontends)
 - **Phase 3 :** Edge computing + PWA
 
-**Exemple de CDN configuration :**
-```yaml
-# CloudFlare Workers - Edge logic
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+**Stratégie CDN et Edge Computing :**
 
-async function handleRequest(request) {
-  // Logic proche de l'utilisateur
-  const cache = caches.default
-  const cacheKey = new Request(request.url, request)
-  
-  let response = await cache.match(cacheKey)
-  if (!response) {
-    response = await fetch(request)
-    event.waitUntil(cache.put(cacheKey, response.clone()))
-  }
-  
-  return response
-}
-```
+**Concepts clés à implémenter :**
+- **Edge Caching :** Contenu statique servi depuis des serveurs proches des utilisateurs
+- **Smart Routing :** Redirection automatique vers la région la plus performante
+- **Edge Computing :** Logique métier exécutée près de l'utilisateur
+- **Cache Invalidation :** Stratégie de mise à jour du contenu cached
+
+**Décisions d'architecture à prendre :**
+- Quel pourcentage du trafic peut être caché ?
+- Quelles sont les latences acceptables par région ?
+- Quel budget pour l'infrastructure edge ?
+- Comment gérer la cohérence des données distribuées ?
 
 **Scaling du backend :**
 
@@ -240,68 +227,81 @@ async function handleRequest(request) {
 - Bases différentes selon les besoins
 - PostgreSQL pour transactionnel, Redis pour cache, Elasticsearch pour recherche
 
-**Exemple de sharding strategy :**
-```python
-# Sharding par user_id
-def get_shard(user_id):
-    shard_count = 4
-    shard_id = hash(user_id) % shard_count
-    return f"db_shard_{shard_id}"
+**Stratégies de Sharding :**
 
-# Routing des requêtes
-def get_user(user_id):
-    shard = get_shard(user_id)
-    db = get_database_connection(shard)
-    return db.execute("SELECT * FROM users WHERE id = %s", user_id)
-```
+**Critères de partitionnement :**
+- **Par utilisateur :** Répartition basée sur l'ID utilisateur (hash)
+- **Par géographie :** Données par région/pays
+- **Par date :** Partitionnement temporel (logs, analytics)
+- **Par fonctionnalité :** Séparation par domaine métier
+
+**Questions d'architecture :**
+- Comment redistribuer quand on ajoute des shards ?
+- Que faire des requêtes cross-shard ?
+- Comment gérer les transactions distribuées ?
+- Quelle stratégie de backup et réplication ?
+
+**Coût vs. Bénéfice :**
+- Complexité opérationnelle significativement accrue
+- Performance améliorée sur lectures/écritures
+- Risque de hotspots selon la clé de partitionnement
 
 ### Patterns d'architecture distribué
 
 **1. Saga Pattern (Transactions distribuées)**
 
-```python
-# Exemple : Process de commande distribuée
-class OrderSaga:
-    def __init__(self):
-        self.steps = [
-            ('payment', 'charge_card', 'refund_card'),
-            ('inventory', 'reserve_items', 'release_items'),
-            ('shipping', 'create_shipment', 'cancel_shipment'),
-            ('notification', 'send_confirmation', 'send_cancellation')
-        ]
-    
-    def execute(self, order_data):
-        completed_steps = []
-        try:
-            for service, action, compensation in self.steps:
-                result = self.call_service(service, action, order_data)
-                completed_steps.append((service, compensation, result))
-        except Exception as e:
-            # Compensation en cas d'échec
-            self.compensate(completed_steps)
-            raise e
-```
+**Concept :** Gérer les transactions qui touchent plusieurs services en décomposant en étapes avec compensation.
+
+**Exemple conceptuel - Processus de commande :**
+1. **Étape 1 :** Paiement (action: débiter, compensation: rembourser)
+2. **Étape 2 :** Réservation stock (action: réserver, compensation: libérer)
+3. **Étape 3 :** Création livraison (action: planifier, compensation: annuler)
+4. **Étape 4 :** Notification (action: confirmer, compensation: avertir annulation)
+
+**Décisions d'architecture :**
+- Orchestration centralisée vs. chorégraphie distribuée ?
+- Comment gérer les compensations partielles ?
+- Timeout et retry policy pour chaque étape ?
+- Comment auditer et monitorer les sagas en cours ?
+
+**Trade-offs :**
+- **Avantage :** Résilience aux pannes, pas de 2PC
+- **Inconvénient :** Consistance éventuelle, complexité accrue
 
 **2. CQRS (Command Query Responsibility Segregation)**
 
 Séparer les opérations de lecture et d'écriture pour optimiser chacune.
 
-```python
-# Write Model - Optimisé pour les écritures
-class OrderCommandHandler:
-    def handle_create_order(self, command):
-        order = Order(command.user_id, command.items)
-        self.event_store.append(OrderCreated(order.id, order.data))
-        
-# Read Model - Optimisé pour les lectures  
-class OrderQueryHandler:
-    def get_order_summary(self, order_id):
-        return self.read_db.query("SELECT * FROM order_summary WHERE id = ?", order_id)
-```
+**Principe :** Deux modèles de données distincts pour les opérations de modification et de consultation.
+
+**Modèle écriture (Command) :**
+- Optimisé pour les transactions et la cohérence
+- Structure normalisée, contraintes strictes
+- Focus sur la logique métier et validations
+
+**Modèle lecture (Query) :**
+- Optimisé pour les performances de lecture
+- Données dénormalisées, vues précalculées
+- Index spécialisés pour les requêtes fréquentes
+
+**Questions d'implémentation :**
+- Comment synchroniser les deux modèles ?
+- Quelle tolérance à la latence de synchronisation ?
+- Technologies différentes pour read vs. write ?
 
 **3. Event Sourcing**
 
-Stocker les événements plutôt que l'état final.
+**Principe :** Stocker tous les événements qui ont modifié l'état plutôt que l'état final.
+
+**Avantages :**
+- Audit trail complet et immuable
+- Possibilité de reconstruire l'état à n'importe quel moment
+- Débogage facilité (rejeu des événements)
+
+**Défis :**
+- Taille de stockage qui croît linéairement
+- Complexité des requêtes sur l'état actuel
+- Gestion des migrations de schéma d'événements
 
 ## Gestion de la dette technique pendant la croissance
 
@@ -402,18 +402,20 @@ Stocker les événements plutôt que l'état final.
 **1. Strangler Fig Pattern**
 Remplacer progressivement l'ancien système par le nouveau.
 
-```python
-# Router qui dirige vers ancien ou nouveau système
-class FeatureRouter:
-    def __init__(self):
-        self.feature_flags = FeatureFlags()
-        
-    def handle_request(self, request):
-        if self.feature_flags.is_enabled('new_payment_system', request.user_id):
-            return self.new_payment_service.process(request)
-        else:
-            return self.legacy_payment_service.process(request)
-```
+**Principe :** Créer une façade qui route vers l'ancien ou le nouveau système selon des critères définis.
+
+**Stratégie de migration :**
+- **Phase 1 :** Identifier les fonctionnalités à migrer par ordre de priorité
+- **Phase 2 :** Implémenter le nouveau système en parallèle
+- **Phase 3 :** Router progressivement via feature flags
+- **Phase 4 :** Valider, monitorer, ajuster le pourcentage
+- **Phase 5 :** Supprimer l'ancien code une fois 100% migré
+
+**Questions de gestion :**
+- Quels sont les critères de bascule (% utilisateurs, fonctionnalités) ?
+- Comment rollback rapidement en cas de problème ?
+- Comment s'assurer de la parité fonctionnelle ?
+- Quel est le coût de maintenir les deux systèmes ?
 
 **2. Branch by Abstraction**
 Créer une abstraction puis remplacer l'implémentation derrière.
@@ -516,21 +518,19 @@ Faire tourner ancien et nouveau système en parallèle pour validation.
 **Onboarding automatisé et scalable :**
 
 **Jour 1 : Self-service setup**
-```bash
-# Script d'onboarding automatisé
-./scripts/new-developer-setup.sh \
-  --name="Marie Dupont" \
-  --email="marie@company.com" \
-  --team="squad-mobile" \
-  --start-date="2024-04-15"
 
-# Crée automatiquement :
-# - Comptes (GitHub, Slack, AWS, etc.)
-# - Machine setup (dotfiles, tools, access)
-# - Documentation personnalisée
-# - Premier projet d'initiation
-# - Buddy assignment
-```
+**Automatisation complète de la création :**
+- **Comptes et accès :** GitHub, Slack, AWS, VPN, etc.
+- **Environnement de développement :** Dotfiles, outils, IDE configuration
+- **Documentation contextualisée :** Wiki adapté à l'équipe d'affectation
+- **Premier projet :** Bug fix ou amélioration mineure pour prendre en main
+- **Buddy assignment :** Pairing automatique avec un mentor
+
+**Éléments clés d'un setup automatisé :**
+- Script idémpotent (rejouable sans problème)
+- Vérification des prérequis et gestion d'erreur
+- Temps d'exécution < 30 minutes
+- Documentation auto-générée du process
 
 **Semaine 1 : Learning path guidé**
 ```markdown

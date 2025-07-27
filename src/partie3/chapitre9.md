@@ -264,18 +264,22 @@ Ajouter plus de machines.
 
 **1. Mesurer avant d'optimiser**
 
-```bash
-# APM tools
-- New Relic / Datadog pour l'applicatif
-- pganalyze / MongoDB Compass pour la DB
-- Chrome DevTools pour le frontend
+**Outils de monitoring essentiels :**
+- **APM applicatif :** New Relic, Datadog, AppDynamics
+- **Base de données :** pganalyze, MongoDB Compass, MySQL Enterprise Monitor
+- **Frontend :** Chrome DevTools, WebPageTest, Lighthouse
+- **Infrastructure :** Prometheus, Grafana, CloudWatch
 
-# Métriques clés
-- Response time P95 (pas la moyenne!)
-- Throughput (req/sec)
-- Error rate
-- Resource utilization
-```
+**Métriques prioritaires à surveiller :**
+- **Response time P95** (pas la moyenne qui masque les problèmes)
+- **Throughput** (requêtes/seconde soutenô)
+- **Error rate** (% d'échecs sur le trafic total)
+- **Resource utilization** (CPU, mémoire, disque, réseau)
+
+**Questions décisionnelles :**
+- Quels sont nos SLA de performance actuels ?
+- À partir de quel seuil intervient-on ?
+- Avons-nous une baseline pour comparer les optimisations ?
 
 **2. Cache intelligent**
 
@@ -340,13 +344,21 @@ LEFT JOIN orders ON users.id = orders.user_id;
 - **Alerting :** PagerDuty ou OpsGenie
 
 **Alertes intelligentes :**
-```yaml
-# ❌ Alerte stupide
-cpu_usage > 80%
 
-# ✅ Alerte intelligente  
-error_rate > 1% AND response_time_p95 > 2s FOR 5 minutes
-```
+**Exemples d'alertes à éviter :**
+- Seuils simples sans contexte (ex: CPU > 80%)
+- Alertes trop sensibles qui génèrent du bruit
+- Métriques vanity sans impact business
+
+**Exemples d'alertes efficaces :**
+- **Composite :** error_rate > 1% ET response_time > 2s pendant 5 minutes
+- **Business impact :** conversion_rate < 95% du baseline
+- **Prédictive :** tendance à la hausse sur les erreurs 4xx
+
+**Principes des bonnes alertes :**
+- Actionnable : l'alerte indique quoi faire
+- Contextuelle : lie la métrique technique à l'impact business
+- Évite le bruit : pas plus de 2-3 alertes par jour en moyenne
 
 ## Sécurité pour les non-experts sécurité
 
@@ -374,27 +386,40 @@ En tant que CTO, vous n'êtes pas un expert sécurité, mais vous devez connaît
 
 **3. Gestion des secrets**
 
-**❌ Jamais :**
-```javascript
-const API_KEY = "sk-1234567890abcdef"; // En dur dans le code
-process.env.DATABASE_URL = "postgres://user:password@host"; // Dans .env versionné
-```
+**❌ Pratiques dangereuses à bannir :**
+- Secrets hardcodés dans le code source
+- Clés API dans les fichiers de configuration versionnés
+- Mots de passe en variables d'environnement non chiffrées
+- Partage de credentials par email/Slack
 
-**✅ Toujours :**
-- Vault (HashiCorp) ou équivalent cloud
-- Rotation automatique des secrets
-- Secrets injectés au runtime
+**✅ Gestion sécurisée des secrets :**
+- **Outils dédiés :** HashiCorp Vault, AWS Secrets Manager, Azure Key Vault
+- **Rotation automatique :** Renouvellement périodique sans intervention manuelle
+- **Injection runtime :** Secrets fournis au démarrage, jamais stockés
+- **Principe du besoin-de-savoir :** Accès minimal et temporaire
+
+**Questions organisationnelles :**
+- Qui a accès aux secrets de production ?
+- À quelle fréquence les secrets sont-ils renouvelés ?
+- Comment auditer l'usage des secrets ?
 
 **4. Sécurité des dépendances**
 
-```bash
-# Audit régulier des vulnérabilités
-npm audit
-bundle audit
-pip-audit
+**Processus d'audit continu :**
+- **Outils automatisés :** npm audit, Snyk, OWASP Dependency Check, bundle audit, pip-audit
+- **Mise à jour automatique :** Dependabot, Renovate, WhiteSource
+- **Intégration CI/CD :** Blocage des déploiements si vulnérabilités critiques
+- **Monitoring continu :** Alertes sur nouvelles vulnérabilités découvertes
 
-# Mise à jour automatique
-dependabot (GitHub)
+**Stratégie de mise à jour :**
+- **Patches de sécurité :** Application immédiate
+- **Versions mineures :** Test automatique puis déploiement
+- **Versions majeures :** Revue manuelle et planification
+
+**Questions de gouvernance :**
+- Quel est notre délai d'application des patches critiques ?
+- Comment équilibrer sécurité et stabilité ?
+- Qui est responsable du suivi des vulnérabilités ?
 renovate
 ```
 

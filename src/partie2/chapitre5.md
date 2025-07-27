@@ -180,8 +180,25 @@ Pas de bullshit, que de la transparence !
 - Évaluation uniquement sur le résultat final
 - Demander du code parfait
 
-**Exemple de bon test (pour un poste backend) :**
-*"Voici les données d'une API de crypto-monnaies. Implémente un service qui calcule les gains/pertes d'un portefeuille. Concentre-toi sur l'architecture et la lisibilité plutôt que sur la performance. 2-3h max, on te paye 200€ même si tu ne finis pas."*
+**Framework de conception de tests techniques :**
+
+**Principes de design d'un bon test :**
+- **Réalisme :** Problème similaire à ceux rencontrés dans le poste
+- **Scope limité :** Faisable dans le temps imparti (2-3h max)
+- **Évaluation holistique :** Architecture, lisibilité, choix techniques
+- **Respect du candidat :** Compensation financière du temps passé
+
+**Questions stratégiques pour concevoir vos tests :**
+- Qu'est-ce qui différencie un bon développeur d'un excellent dans notre contexte ?
+- Quelles compétences techniques sont vraiment critiques pour le poste ?
+- Comment évaluer la capacité d'apprentissage et d'adaptation ?
+- Quel niveau de séniorité nous permet de prendre des risques sur ce recrutement ?
+
+**Alternatives aux tests techniques :**
+- **Revue de code :** Analyse d'un code existant avec propositions d'amélioration
+- **Architecture review :** Discussion sur un design de système
+- **Problem-solving :** Résolution de problème en live avec justification des choix
+- **Portfolio review :** Analyse approfondie des projets passés du candidat
 
 **Live coding / Pair programming**
 

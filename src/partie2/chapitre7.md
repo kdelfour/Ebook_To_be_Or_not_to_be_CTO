@@ -83,36 +83,34 @@ Quand ça casse en prod (et ça arrivera) :
 - Documentation de l'apprentissage
 - Partage avec toute l'équipe
 
-**Template de post-mortem :**
+**Framework de post-mortem constructif :**
 
-```markdown
-# Post-Mortem - [Incident]
+**Méthodologie d'apprentissage post-incident :**
 
-## Timeline
-- [Heure] : Détection du problème
-- [Heure] : Début d'investigation  
-- [Heure] : Identification de la cause
-- [Heure] : Résolution
+**1. Principes fondamentaux :**
+- **Bienveillance :** Pas de blâme, focus sur l'amélioration systémique
+- **Factualité :** Timeline précise, causes objectives, impact mesuré
+- **Apprentissage :** Chaque incident est une opportunité de renforcer le système
+- **Transparence :** Partage des learnings avec toute l'équipe
 
-## Cause racine
-[Description factuelle, sans pointer de responsable]
+**2. Éléments clés à analyser :**
+- **Cause racine :** Pourquoi c'est arrivé (technique + organisationnel)
+- **Détection :** Pourquoi on ne l'a pas vu venir plus tôt
+- **Résolution :** Ce qui a bien/mal marché dans la réaction
+- **Prévention :** Comment éviter que cela se reproduise
 
-## Impact
-- Utilisateurs affectés : X
-- Durée : X minutes
-- Perte estimée : X€
+**3. Actions d'amélioration :**
+- **Court terme :** Fixes immédiats pour réduire la probabilité/impact
+- **Moyen terme :** Améliorations architecture/processus
+- **Long terme :** Investissements stratégiques (outils, formation)
 
-## Ce qu'on a bien fait
-- [Action positive 1]
-- [Action positive 2]
+**4. Questions stratégiques pour le CTO :**
+- Cet incident révèle-t-il des faiblesses systémiques ?
+- L'investissement préventif est-il justifié vs le risque ?
+- Comment transformer cette crise en opportunité d'amélioration ?
+- Quels apprentissages peuvent bénéficier à d'autres équipes ?
 
-## Ce qu'on peut améliorer
-- [Amélioration 1] → [Action] → [Responsable] → [Date]
-- [Amélioration 2] → [Action] → [Responsable] → [Date]
-
-## Apprentissages pour l'équipe
-[Ce que tout le monde peut retenir]
-```
+**Impact sur la culture :** Post-mortems réguliers et bien menés renforcent la confiance, l'apprentissage collectif et la résilience organisationnelle.
 
 ## Agile, DevOps : adapter les méthodes
 
@@ -313,36 +311,37 @@ README, API docs, commentaires complexes.
 **4. Célébrer le bon code**
 N'hésitez pas à mettre des 👍 ou "Nice solution!" sur les bonnes idées.
 
-### Template de description de PR
+### Framework de Pull Request efficace
 
-```markdown
-## Qu'est-ce que ça fait ?
-[Description en une phrase de la fonctionnalité]
+**Stratégie pour des code reviews de qualité :**
 
-## Pourquoi ?
-[Contexte business ou technique]
+**1. Structure d'une PR optimale :**
+- **Taille limitée :** Maximum 400 lignes modifiées pour faciliter la review
+- **Scope unique :** Une fonctionnalité/fix par PR pour clarifier l'intention
+- **Description complète :** Contexte, approche, impact, instructions test
 
-## Comment ?
-[Approche technique choisie]
+**2. Éléments indispensables :**
+- **Justification business :** Pourquoi ce changement est nécessaire
+- **Approche technique :** Choix d'implémentation et alternatives considérées
+- **Impact et risques :** Ce qui peut casser, performances, sécurité
+- **Validation :** Comment tester, cas limites à vérifier
 
-## Comment tester ?
-- [ ] Étape 1
-- [ ] Étape 2
-- [ ] Cas de test edge case
+**3. Checklist qualité (automatisable) :**
+- **Tests :** Couverture maintenue, cas d'échec testés
+- **Documentation :** README, API docs, commentaires complexes mis à jour
+- **Sécurité :** Pas de secrets, validation input, permissions
+- **Performance :** Pas de régressions, optimisations si besoin
 
-## Screenshots/Vidéos
-[Si applicable]
+**4. Guidelines pour les reviewers :**
+- **Focus stratégique :** Architecture, logique business, maintenabilité
+- **Feedback constructif :** Suggestions d'amélioration, pas de critique stérile
+- **Timeline respectée :** Review dans les 4h pour ne pas bloquer l'équipe
 
-## Checklist
-- [ ] Tests unitaires ajoutés/modifiés
-- [ ] Documentation mise à jour
-- [ ] Pas de secrets en dur
-- [ ] Performance vérifiée
-- [ ] Sécurité vérifiée
-
-## Notes pour les reviewers
-[Points spécifiques à regarder]
-```
+**Questions pour optimiser votre processus :**
+- Vos PRs sont-elles trop grosses/complexes ?
+- Le temps de review impacte-t-il la vélocité ?
+- Les reviewers comprennent-ils rapidement l'intention ?
+- Les erreurs détectées justifient-elles l'investissement temps ?
 
 ### Automatiser ce qui peut l'être
 

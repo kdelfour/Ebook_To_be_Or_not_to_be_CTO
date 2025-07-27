@@ -191,14 +191,29 @@ Aide à prioriser vs autres projets.
 
 **RICE Score (Reach, Impact, Confidence, Effort)**
 
-```
-Score RICE = (Reach × Impact × Confidence) / Effort
+**Framework de décision pour la priorisation produit**
 
-Reach : Combien d'utilisateurs affectés (par trimestre)
-Impact : Ampleur de l'impact (1-5)
-Confidence : Niveau de certitude (0-100%)
-Effort : Temps de développement (en semaines)
-```
+**Comment utiliser RICE en tant que CTO :**
+- **Reach :** Collaborez avec l'équipe produit pour estimer l'audience touchée
+- **Impact :** Challengez les hypothèses business avec des données techniques
+- **Confidence :** Apportez votre expertise sur la faisabilité technique  
+- **Effort :** Fournissez des estimations réalistes incluant la dette technique
+
+**Questions stratégiques à poser :**
+- Les estimations d'impact incluent-elles les coûts de maintenance long terme ?
+- Avons-nous les compétences techniques pour livrer dans les délais estimés ?
+- Cette feature s'aligne-t-elle avec notre roadmap technique ?
+- Quels sont les risques techniques non pris en compte dans l'effort ?
+
+**Alternatives au RICE à considérer :**
+- **Kano Model :** Pour comprendre la satisfaction utilisateur
+- **ICE (Impact, Confidence, Ease) :** Version simplifiée pour les équipes agiles
+- **Value vs Complexity Matrix :** Approche visuelle pour les ateliers produit
+
+**Pièges à éviter :**
+- Scores RICE manipulés pour justifier des décisions déjà prises
+- Sous-estimation systématique de l'effort technique
+- Oubli des dépendances techniques dans le calcul
 
 **Exemple concret chez client Y :**
 
@@ -373,19 +388,33 @@ Q3-Q4 2024 (Horizon 3):
 
 ### ROI des investissements techniques
 
-**Template de calcul ROI :**
+**Framework de calcul ROI pour investissements techniques :**
 
-```
-Investissement : Migration vers microservices
-Coût : 120K€ (3 mois × 2 développeurs)
+**Méthodologie de calcul structurée :**
 
-Bénéfices Year 1 :
-- Vélocité +50% = 6 features supplémentaires = 180K€ revenue
-- Downtime -80% = moins de perte clients = 50K€ saved
-- Infrastructure optimisée = 20K€ saved/year
+**1. Quantification des coûts directs :**
+- Temps développeur (incluez le fully loaded cost : salaire + charges + overhead)
+- Coûts d'infrastructure et outils additionnels
+- Formation et montée en compétences équipe
+- Coût d'opportunité (features business retardées)
 
-ROI Year 1 : (250K€ - 120K€) / 120K€ = 108%
-```
+**2. Identification des bénéfices mesurables :**
+- **Vélocité :** Réduction time-to-market des nouvelles features
+- **Qualité :** Diminution coûts de support et maintenance
+- **Scalabilité :** Économies d'infrastructure et capacité de croissance
+- **Talent :** Attraction/rétention des développeurs (réduction turnover)
+
+**3. Questions stratégiques pour valider le ROI :**
+- Ces bénéfices sont-ils réellement atteignables avec notre équipe actuelle ?
+- Quels sont les risques d'échec et leur impact sur le calcul ?
+- Comment mesurer concrètement l'amélioration de vélocité ?
+- Les gains estimés prennent-ils en compte la courbe d'apprentissage ?
+
+**4. Présentation au management :**
+- Scénarios conservateur, réaliste, optimiste
+- Timeline de réalisation des bénéfices
+- Métriques de suivi pour valider les hypothèses
+- Plan de mitigation si les objectifs ne sont pas atteints
 
 ## Framework de priorisation tech/business
 

@@ -283,53 +283,60 @@ Voir #incident-response channel
 **Au lieu de processus manuels :**
 
 **Quality Gates automatisés :**
-```yaml
-# .github/workflows/quality.yml
-name: Quality Gates
-on: [pull_request]
-jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run tests
-      run: npm test
-    - name: Check coverage
-      run: npm run coverage:check
-    - name: Security scan
-      run: npm audit
-    - name: Performance check
-      run: npm run lighthouse
-```
+
+**Décision stratégique :** Investir dans l'automatisation des contrôles qualité pour maintenir la vélocité à mesure que l'équipe grandit.
+
+**Questions CTO à se poser :**
+- Quels sont nos critères de qualité non-négociables ?
+- Quel niveau d'automatisation justifie l'investissement initial ?
+- Comment mesurer le ROI de l'automatisation qualité ?
+
+**Options d'implémentation :**
+- Solution cloud clé-en-main (GitHub Actions, GitLab CI, CircleCI)
+- Plateforme interne avec Jenkins/TeamCity
+- Hybride : CI cloud + outils maison pour les spécificités
+
+**Décisions d'architecture :**
+- Tests parallélisés vs séquentiels (coût vs vitesse)
+- Niveaux de tests : unitaires, intégration, end-to-end
+- Stratégie de feedback : bloquant vs informatif
+- Métriques de suivi : temps de build, taux de succès, coverage
 
 **Deployment automatisé :**
-```yaml
-# Auto-deploy si tests passent
-if: github.ref == 'refs/heads/main'
-steps:
-- name: Deploy to staging
-  run: ./deploy.sh staging
-- name: Run E2E tests
-  run: npm run test:e2e
-- name: Deploy to production
-  if: success()
-  run: ./deploy.sh production
-```
+
+**Framework de décision :** Comment choisir votre stratégie de déploiement
+
+**Options stratégiques :**
+- **Conservative :** Déploiements manuels avec validation humaine
+- **Progressive :** Automatisation par environnement (dev → staging → prod)
+- **Aggressive :** Continuous deployment avec feature flags
+
+**Critères de choix :**
+- Tolérance au risque de votre business
+- Maturité de vos tests automatisés
+- Complexité de votre architecture
+- Compétences DevOps de l'équipe
+
+**Trade-offs à évaluer :**
+- Vitesse vs contrôle
+- Automatisation vs flexibilité
+- Investissement initial vs gains long terme
 
 **Onboarding automatisé :**
-```bash
-# Script d'onboarding nouveau dev
-./scripts/onboard-developer.sh \
-  --name="Marie Dupont" \
-  --email="marie@company.com" \
-  --team="squad-clients" \
-  --role="frontend-developer"
 
-# Créé automatiquement :
-# - Accès GitHub/Slack/AWS
-# - Machine setup script
-# - Buddy assignment
-# - Onboarding checklist
-```
+**Vision stratégique :** L'onboarding automatisé comme avantage concurrentiel pour attirer et retenir les talents.
+
+**Éléments à automatiser (par ordre de priorité) :**
+1. **Accès et permissions :** Annuaires, outils, droits d'accès
+2. **Environnement de développement :** Configuration poste, outils, repos
+3. **Formation :** Parcours personnalisé selon le profil
+4. **Intégration équipe :** Attribution buddy, planning premiers jours
+
+**ROI de l'automatisation onboarding :**
+- Réduction du time-to-productivity des nouveaux développeurs
+- Libération de temps des seniors pour des tâches à valeur ajoutée
+- Amélioration de l'expérience candidat et de l'employer branding
+- Standardisation et amélioration continue du processus
 
 ## Documentation et knowledge management
 
@@ -519,16 +526,31 @@ tags: [infrastructure, kubernetes]
 
 **Escalation automatique :**
 
-```python
-# Alert escalation rules
-if incident.severity == "Critical":
-    notify_immediately(ceo, cto, cpo)
-    update_status_page()
-    start_incident_bridge()
-elif incident.duration > 30_minutes:
-    notify(c_level_team)
-    update_stakeholders()
-```
+**Framework de décision d'escalade :** Comment structurer votre chaîne de communication de crise
+
+**Niveaux d'escalade par sévérité :**
+- **P0 (Critical) :** Impact business majeur → Alerte immédiate C-Level
+- **P1 (High) :** Dégradation service → Notification équipe technique + management
+- **P2 (Medium) :** Bug significatif → Workflow équipe standard
+- **P3 (Low) :** Amélioration → Backlog normal
+
+**Critères de définition à établir avec le business :**
+- Seuils de revenus impactés justifiant chaque niveau
+- Nombre d'utilisateurs affectés par niveau
+- Durée d'incident déclenchant l'escalade
+- Services critiques vs non-critiques
+
+**Questions stratégiques pour votre organisation :**
+- Qui doit être informé à quel moment ?
+- Quels canaux de communication privilégier selon l'urgence ?
+- Comment éviter la fatigue d'alerte (cry wolf effect) ?
+- Quel niveau d'automatisation vs intervention humaine ?
+
+**Outils et vendors à évaluer :**
+- PagerDuty, Opsgenie pour la gestion d'incidents
+- Slack/Teams pour la communication interne
+- StatusPage, Atlassian Status pour la communication externe
+- Monitoring : DataDog, New Relic, Grafana
 
 **Template communication incident :**
 
