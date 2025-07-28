@@ -36,7 +36,6 @@
 - [Développement personnel et leadership](./partie5/chapitre15.md)
 - [Communication et influence](./partie5/chapitre16.md)
 
----
 
 [Conclusion](./conclusion.md)
 
