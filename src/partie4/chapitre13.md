@@ -196,6 +196,43 @@ Review trimestrielle : qu'est-ce qui marche, qu'est-ce qui ralentit ?
 
 **Process : Code Review**
 
+```mermaid
+flowchart TD
+    PR[Pull Request Created] --> AC[Automated Checks]
+    
+    AC --> T{Tests Pass?}
+    T -->|❌| F[Fix Tests]
+    T -->|✅| C{Coverage OK?}
+    F --> AC
+    
+    C -->|❌| FC[Improve Coverage]
+    C -->|✅| L{Linter OK?}
+    FC --> AC
+    
+    L -->|❌| FL[Fix Linting]
+    L -->|✅| RR[Ready for Review]
+    FL --> AC
+    
+    RR --> REV[Human Review<br/>Focus: Logic, Architecture,<br/>Performance, Security]
+    
+    REV --> A{Approved?}
+    A -->|❌| CR[Change Requested<br/>Constructive Feedback]
+    A -->|✅| M[Merge to Main]
+    
+    CR --> RR
+    
+    RR -.->|> 4h no response| ESC[Escalate to Tech Lead]
+    ESC --> REV
+    
+    style PR fill:#89dceb,color:#11111b
+    style AC fill:#f9e2af,color:#11111b
+    style REV fill:#89b4fa,color:#11111b
+    style M fill:#a6e3a1,color:#11111b
+    style ESC fill:#fab387,color:#11111b
+```
+
+**Guidelines du processus :**
+
 ```markdown
 # Code Review Guidelines
 
@@ -283,53 +320,60 @@ Voir #incident-response channel
 **Au lieu de processus manuels :**
 
 **Quality Gates automatisés :**
-```yaml
-# .github/workflows/quality.yml
-name: Quality Gates
-on: [pull_request]
-jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Run tests
-      run: npm test
-    - name: Check coverage
-      run: npm run coverage:check
-    - name: Security scan
-      run: npm audit
-    - name: Performance check
-      run: npm run lighthouse
-```
+
+**Décision stratégique :** Investir dans l'automatisation des contrôles qualité pour maintenir la vélocité à mesure que l'équipe grandit.
+
+**Questions CTO à se poser :**
+- Quels sont nos critères de qualité non-négociables ?
+- Quel niveau d'automatisation justifie l'investissement initial ?
+- Comment mesurer le ROI de l'automatisation qualité ?
+
+**Options d'implémentation :**
+- Solution cloud clé-en-main (GitHub Actions, GitLab CI, CircleCI)
+- Plateforme interne avec Jenkins/TeamCity
+- Hybride : CI cloud + outils maison pour les spécificités
+
+**Décisions d'architecture :**
+- Tests parallélisés vs séquentiels (coût vs vitesse)
+- Niveaux de tests : unitaires, intégration, end-to-end
+- Stratégie de feedback : bloquant vs informatif
+- Métriques de suivi : temps de build, taux de succès, coverage
 
 **Deployment automatisé :**
-```yaml
-# Auto-deploy si tests passent
-if: github.ref == 'refs/heads/main'
-steps:
-- name: Deploy to staging
-  run: ./deploy.sh staging
-- name: Run E2E tests
-  run: npm run test:e2e
-- name: Deploy to production
-  if: success()
-  run: ./deploy.sh production
-```
+
+**Framework de décision :** Comment choisir votre stratégie de déploiement
+
+**Options stratégiques :**
+- **Conservative :** Déploiements manuels avec validation humaine
+- **Progressive :** Automatisation par environnement (dev → staging → prod)
+- **Aggressive :** Continuous deployment avec feature flags
+
+**Critères de choix :**
+- Tolérance au risque de votre business
+- Maturité de vos tests automatisés
+- Complexité de votre architecture
+- Compétences DevOps de l'équipe
+
+**Trade-offs à évaluer :**
+- Vitesse vs contrôle
+- Automatisation vs flexibilité
+- Investissement initial vs gains long terme
 
 **Onboarding automatisé :**
-```bash
-# Script d'onboarding nouveau dev
-./scripts/onboard-developer.sh \
-  --name="Marie Dupont" \
-  --email="marie@company.com" \
-  --team="squad-clients" \
-  --role="frontend-developer"
 
-# Créé automatiquement :
-# - Accès GitHub/Slack/AWS
-# - Machine setup script
-# - Buddy assignment
-# - Onboarding checklist
-```
+**Vision stratégique :** L'onboarding automatisé comme avantage concurrentiel pour attirer et retenir les talents.
+
+**Éléments à automatiser (par ordre de priorité) :**
+1. **Accès et permissions :** Annuaires, outils, droits d'accès
+2. **Environnement de développement :** Configuration poste, outils, repos
+3. **Formation :** Parcours personnalisé selon le profil
+4. **Intégration équipe :** Attribution buddy, planning premiers jours
+
+**ROI de l'automatisation onboarding :**
+- Réduction du time-to-productivity des nouveaux développeurs
+- Libération de temps des seniors pour des tâches à valeur ajoutée
+- Amélioration de l'expérience candidat et de l'employer branding
+- Standardisation et amélioration continue du processus
 
 ## Documentation et knowledge management
 
@@ -519,16 +563,57 @@ tags: [infrastructure, kubernetes]
 
 **Escalation automatique :**
 
-```python
-# Alert escalation rules
-if incident.severity == "Critical":
-    notify_immediately(ceo, cto, cpo)
-    update_status_page()
-    start_incident_bridge()
-elif incident.duration > 30_minutes:
-    notify(c_level_team)
-    update_stakeholders()
+**Framework de décision d'escalade :** Comment structurer votre chaîne de communication de crise
+
+```mermaid
+flowchart TD
+    I[Incident Détecté] --> S{Évaluation Sévérité}
+    
+    S -->|Impact Business Majeur| P0[P0 - Critical]
+    S -->|Dégradation Service| P1[P1 - High]
+    S -->|Bug Significatif| P2[P2 - Medium]
+    S -->|Amélioration| P3[P3 - Low]
+    
+    P0 --> A0[Alerte Immédiate<br/>CEO, CTO, VP Eng<br/>< 5 minutes]
+    P1 --> A1[Notification<br/>Management + Tech Lead<br/>< 15 minutes]
+    P2 --> A2[Workflow Standard<br/>Équipe assignée<br/>< 1 heure]
+    P3 --> A3[Backlog Normal<br/>Prochaine planification]
+    
+    A0 --> R0[War Room<br/>Communication continue<br/>Status updates /30min]
+    A1 --> R1[Tech Call<br/>Status updates /2h]
+    A2 --> R2[Suivi standard<br/>Daily updates]
+    A3 --> R3[Process normal]
+    
+    style I fill:#f9e2af,color:#11111b
+    style P0 fill:#f38ba8,color:#11111b
+    style P1 fill:#fab387,color:#11111b
+    style P2 fill:#f9e2af,color:#11111b
+    style P3 fill:#a6e3a1,color:#11111b
 ```
+
+**Niveaux d'escalade par sévérité :**
+- **P0 (Critical) :** Impact business majeur → Alerte immédiate C-Level
+- **P1 (High) :** Dégradation service → Notification équipe technique + management
+- **P2 (Medium) :** Bug significatif → Workflow équipe standard
+- **P3 (Low) :** Amélioration → Backlog normal
+
+**Critères de définition à établir avec le business :**
+- Seuils de revenus impactés justifiant chaque niveau
+- Nombre d'utilisateurs affectés par niveau
+- Durée d'incident déclenchant l'escalade
+- Services critiques vs non-critiques
+
+**Questions stratégiques pour votre organisation :**
+- Qui doit être informé à quel moment ?
+- Quels canaux de communication privilégier selon l'urgence ?
+- Comment éviter la fatigue d'alerte (cry wolf effect) ?
+- Quel niveau d'automatisation vs intervention humaine ?
+
+**Outils et vendors à évaluer :**
+- PagerDuty, Opsgenie pour la gestion d'incidents
+- Slack/Teams pour la communication interne
+- StatusPage, Atlassian Status pour la communication externe
+- Monitoring : DataDog, New Relic, Grafana
 
 **Template communication incident :**
 
@@ -729,13 +814,22 @@ Consultés: [Liste des personnes consultées]
 
 ### 5-15 personnes : L'équipe unique
 
-```
-              CTO
-               |
-┌──────────────┴──────────────┐
-│ Frontend │ Backend │ DevOps │
-│ (2-3)    │ (3-4)   │ (1-2)  │
-└──────────┴─────────┴────────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    FE[Frontend Team<br/>2-3 personnes]
+    BE[Backend Team<br/>3-4 personnes]
+    DO[DevOps Team<br/>1-2 personnes]
+    
+    CTO --> FE
+    CTO --> BE
+    CTO --> DO
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style FE fill:#89dceb,color:#11111b
+    style BE fill:#a6e3a1,color:#11111b
+    style DO fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -750,17 +844,30 @@ Consultés: [Liste des personnes consultées]
 
 ### 15-30 personnes : Équipes par composant
 
-```
-             CTO
-              |
-    ┌─────────┼──────────┐
-Frontend   Backend   Platform
-  Lead      Lead       Lead
-    |         |          |
- ┌──┴──┐   ┌──┴──┐    ┌──┴───┐
- │Dev  │   │Dev  │    │DevOps│
- │(4-5)│   │(5-6)│    │(2-3) │
- └─────┘   └─────┘    └──────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    FL[Frontend Lead]
+    BL[Backend Lead] 
+    PL[Platform Lead]
+    
+    FD[Frontend Devs<br/>4-5 personnes]
+    BD[Backend Devs<br/>5-6 personnes]
+    DO[DevOps Team<br/>2-3 personnes]
+    
+    CTO --> FL
+    CTO --> BL
+    CTO --> PL
+    
+    FL --> FD
+    BL --> BD
+    PL --> DO
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style FL fill:#89b4fa,color:#11111b
+    style BL fill:#89b4fa,color:#11111b
+    style PL fill:#89b4fa,color:#11111b
 ```
 
 **Avantages :**
@@ -775,19 +882,37 @@ Frontend   Backend   Platform
 
 ### 30-80 personnes : Équipes produit
 
-```
-                 CTO
-                  |
-    ┌─────────────┼──────────┐
-   Tribe A     Tribe B    Platform
-     |            |          |
- ┌───┴────┐   ┌───┴───┐   ┌──┴────┐
- │Squad 1 │   │Squad 3│   │ Infra │
- │(6-8)   │   │(6-8)  │   │(8-10) │
- │        │   └───────┘   └───────┘
- │Squad 2 │              
- │(6-8)   │              
- └────────┘              
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    TA[Tribe A<br/>Feature Teams]
+    TB[Tribe B<br/>Feature Teams]
+    PT[Platform Team]
+    
+    S1[Squad 1<br/>6-8 personnes<br/>Full-stack]
+    S2[Squad 2<br/>6-8 personnes<br/>Full-stack]
+    S3[Squad 3<br/>6-8 personnes<br/>Full-stack]
+    
+    IF[Infrastructure<br/>8-10 personnes<br/>DevOps/Platform]
+    
+    CTO --> TA
+    CTO --> TB
+    CTO --> PT
+    
+    TA --> S1
+    TA --> S2
+    TB --> S3
+    PT --> IF
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style TA fill:#a6e3a1,color:#11111b
+    style TB fill:#a6e3a1,color:#11111b
+    style PT fill:#f9e2af,color:#11111b
+    style S1 fill:#89dceb,color:#11111b
+    style S2 fill:#89dceb,color:#11111b
+    style S3 fill:#89dceb,color:#11111b
+    style IF fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -802,17 +927,41 @@ Frontend   Backend   Platform
 
 ### 80+ personnes : Organisation hybride
 
-```
-                   CTO
-                    |
-        ┌───────────┼────────────┐
-    VP Eng A    VP Eng B    VP Platform
-        |           |            |
-   ┌────┴──┐    ┌───┴───┐    ┌───┴────┐
-   │Tribe  │    │ Tribe │    │Platform│
-   │Mobile │    │ Web   │    │ Teams  │
-   │(3 sq.)│    │(4 sq.)│    │(5 sq.) │
-   └───────┘    └───────┘    └────────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    VPA[VP Engineering A<br/>Product Domain]
+    VPB[VP Engineering B<br/>Product Domain]
+    VPP[VP Platform<br/>Infrastructure]
+    
+    TM[Tribe Mobile<br/>3 squads<br/>18-24 personnes]
+    TW[Tribe Web<br/>4 squads<br/>24-32 personnes]
+    
+    PT1[Platform Team 1<br/>Infrastructure<br/>8-10 personnes]
+    PT2[Platform Team 2<br/>DevTools<br/>6-8 personnes]
+    PT3[Platform Team 3<br/>Data/ML<br/>10-12 personnes]
+    
+    CTO --> VPA
+    CTO --> VPB
+    CTO --> VPP
+    
+    VPA --> TM
+    VPB --> TW
+    
+    VPP --> PT1
+    VPP --> PT2
+    VPP --> PT3
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style VPA fill:#f38ba8,color:#11111b
+    style VPB fill:#f38ba8,color:#11111b
+    style VPP fill:#f38ba8,color:#11111b
+    style TM fill:#a6e3a1,color:#11111b
+    style TW fill:#a6e3a1,color:#11111b
+    style PT1 fill:#fab387,color:#11111b
+    style PT2 fill:#fab387,color:#11111b
+    style PT3 fill:#fab387,color:#11111b
 ```
 
 **Avantages :**

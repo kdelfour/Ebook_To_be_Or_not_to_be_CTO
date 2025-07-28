@@ -70,13 +70,10 @@ Ce quelqu'un, ça pourrait être vous.
 
 Après ce voyage de 16 chapitres, la question n'est plus vraiment "to be or not to be a CTO". Elle est plutôt : "quel type de CTO voulez-vous être ?"
 
-**Le CTO technique pur :** Celui qui reste proche du code, qui définit l'architecture, qui résout les problèmes de performance. C'est un rôle valide, surtout dans les entreprises tech-first.
-
-**Le CTO manager :** Celui qui se concentre sur les équipes, les processus, l'organisation. Qui considère que son code, c'est ses développeurs. Rôle indispensable dans les grandes structures.
-
-**Le CTO stratégique :** Celui qui pense produit, business, vision à long terme. Qui fait le pont entre la tech et la stratégie d'entreprise. Crucial pour les scale-ups en croissance.
-
-**Le CTO hybride :** Un peu de tout, selon les besoins et les moments. Probablement le profil le plus répandu, et le plus challengeant.
+ - Celui qui reste proche du code, qui définit l'architecture, qui résout les problèmes de performance. C'est un rôle valide, surtout dans les entreprises tech-first.
+ - Celui qui se concentre sur les équipes, les processus, l'organisation. Qui considère que son code, c'est ses développeurs. Rôle indispensable dans les grandes structures.
+ - Celui qui pense produit, business, vision à long terme. Qui fait le pont entre la tech et la stratégie d'entreprise. Crucial pour les scale-ups en croissance.
+ - Un peu de tout, selon les besoins et les moments. Probablement le profil le plus répandu, et le plus challengeant.
 
 Il n'y a pas de bon ou mauvais choix. Il y a juste le choix qui vous correspond, à vous, à votre entreprise, à votre moment de carrière.
 
@@ -109,7 +106,3 @@ L'équipe technique compte sur vous. L'entreprise compte sur vous. Et quelque pa
 *To be a CTO*, finalement, c'est ça : accepter cette responsabilité, embrasser cette complexité, et prendre plaisir à transformer des idées en réalité, avec des équipes humaines, grâce à la technologie.
 
 Welcome to the club. 🚀
-
----
-
-*"Le meilleur moment pour devenir CTO, c'était il y a 10 ans. Le deuxième meilleur moment, c'est maintenant."*

@@ -31,8 +31,12 @@
 - [Processus et organisation](./partie4/chapitre13.md)
 - [Scaling et croissance](./partie4/chapitre14.md)
 
----
+# Partie 5 : Se développer comme CTO
 
-[En conclusion](./conclusion.md)
+- [Développement personnel et leadership](./partie5/chapitre15.md)
+- [Communication et influence](./partie5/chapitre16.md)
+
+
+[Conclusion](./conclusion.md)
 
 [Annexes](./annexes.md)

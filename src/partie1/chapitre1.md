@@ -1,4 +1,6 @@
+
 # Le rôle de CTO démystifié
+{:toc}
 
 > **Objectif :** Clarifier ce qu'est vraiment un CTO
 

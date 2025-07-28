@@ -242,29 +242,33 @@ Migration progressive : on commence par extraire le module de facturation (ident
 
 **Interne - Canal de crise (Slack/Teams)**
 
-Template de première communication :
-```
-🚨 INCIDENT EN COURS
-- Impact: [Description courte]
-- Depuis: [Timestamp]
-- Utilisateurs affectés: [Estimation]
-- Équipe mobilisée: @Paul @Marie @Sophie
-- Incident Commander: @Kevin
-- Prochaine update: dans 30 minutes
-```
+**Framework de communication de crise structurée :**
 
-**Externe - Status page**
+**Princi0pes de communication d'incident :**
 
-```
-🔴 INVESTIGATING - Service Disruption
-Posted: 14:23 UTC
+**1. Communication interne (première alerte) :**
+- **Clarté :** Impact décrit en termes business, pas techniques
+- **Assignation :** Rôles et responsabilités clairs dès le départ
+- **Timeline :** Engagement sur les points de suivi réguliers
+- **Escalade :** Critères clairs pour alerter le management
 
-We're currently investigating reports of service disruption affecting user authentication. Our team is actively working on a resolution.
+**2. Communication externe (clients/public) :**
+- **Transparence :** Reconnaissance rapide du problème
+- **Empathie :** Compréhension de l'impact sur les utilisateurs
+- **Action :** Équipe mobilisée, travail en cours
+- **Engagement :** Timeline réaliste pour les mises à jour
 
-Updates will be provided every 30 minutes or when significant progress is made.
+**Questions stratégiques pour votre framework :**
+- Quels canaux privilégier selon la sévérité ?
+- Comment adapter le message selon l'audience ?
+- Quel niveau de détail technique partager ?
+- Comment éviter la sur-communication qui noie l'information ?
 
-Next update: 14:53 UTC
-```
+**Outils et processus à mettre en place :**
+- Status page automatisée avec intégrations monitoring
+- Templates pré-écrits pour les scénarios fréquents
+- Chaînes d'escalade définies avec seuils clairs
+- Formation équipe sur les techniques de communication de crise
 
 **Règles de communication :**
 - Fréquence régulière (toutes les 30 min minimum)
@@ -302,33 +306,39 @@ Next update: 14:53 UTC
 - Soit changement de poste (si possible)
 - Soit séparation à l'amiable
 
-**Exemple de plan d'amélioration :**
+**Framework de plan d'amélioration des performances :**
 
-```markdown
-# Plan d'amélioration - [Développeur]
+**Méthodologie structurée pour la remédiation :**
 
-## Objectifs (3 mois)
-- [ ] Réduire les bugs en production de 5/mois à 1/mois
-- [ ] Respecter 90% des estimations vs 60% actuellement  
-- [ ] Participer activement aux code reviews (min 5 par semaine)
-- [ ] Améliorer les skills React (formation + projet pratique)
+**1. Diagnostic précis des causes :**
+- **Compétences techniques :** Gaps identifiés vs niveau requis
+- **Facteurs organisationnels :** Processus, outils, environnement
+- **Motivation personnelle :** Alignement avec objectifs carrière
+- **Circonstances extérieures :** Problèmes personnels, charge de travail
 
-## Support fourni
-- Mentoring avec Sarah (2h/semaine)
-- Formation React avancé (3 jours)
-- Pairing sur les tâches complexes
-- 1-on-1 hebdomadaires avec manager
+**2. Objectifs SMART et mesurables :**
+- **Spécifiques :** Comportements/résultats précis attendus
+- **Mesurables :** Métriques objectives (qualité, délais, satisfaction)
+- **Atteignables :** Réalistes compte tenu du contexte
+- **Temporalisés :** Échéances claires avec points de contrôle
 
-## Points de contrôle
-- Semaine 3 : Évaluation première période
-- Semaine 6 : Point milieu de parcours
-- Semaine 12 : Évaluation finale
+**3. Support adapté au profil :**
+- **Formation technique :** Selon les gaps identifiés
+- **Mentoring :** Pairing avec un développeur expérimenté
+- **Ajustement organisationnel :** Charge, outils, processus
+- **Suivi rapproché :** Fréquence adaptée à la situation
 
-## Métriques de succès
-- Code quality: amélioration SonarQube de 2.5 à 4/5
-- Satisfaction équipe: feedback positif en retro
-- Vélocité: estimation accuracy > 85%
-```
+**4. Critères de succès et conséquences :**
+- **Métriques de progression :** Indicateurs intermdiaires
+- **Scénarios de réussite :** Nouvelles responsabilités, reconnaissance
+- **Plan B :** Alternatives si amélioration insuffisante
+- **Décision finale :** Critères objectifs pour continuation/séparation
+
+**Questions clés pour le CTO :**
+- L'investissement en temps/ressources est-il justifié ?
+- L'équipe peut-elle supporter cette période d'amélioration ?
+- Les causes sont-elles réellement corrigeables ?
+- Quel message cela envoie-t-il au reste de l'équipe ?
 
 ### Comportements toxiques
 
