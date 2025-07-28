@@ -196,6 +196,43 @@ Review trimestrielle : qu'est-ce qui marche, qu'est-ce qui ralentit ?
 
 **Process : Code Review**
 
+```mermaid
+flowchart TD
+    PR[Pull Request Created] --> AC[Automated Checks]
+    
+    AC --> T{Tests Pass?}
+    T -->|❌| F[Fix Tests]
+    T -->|✅| C{Coverage OK?}
+    F --> AC
+    
+    C -->|❌| FC[Improve Coverage]
+    C -->|✅| L{Linter OK?}
+    FC --> AC
+    
+    L -->|❌| FL[Fix Linting]
+    L -->|✅| RR[Ready for Review]
+    FL --> AC
+    
+    RR --> REV[Human Review<br/>Focus: Logic, Architecture,<br/>Performance, Security]
+    
+    REV --> A{Approved?}
+    A -->|❌| CR[Change Requested<br/>Constructive Feedback]
+    A -->|✅| M[Merge to Main]
+    
+    CR --> RR
+    
+    RR -.->|> 4h no response| ESC[Escalate to Tech Lead]
+    ESC --> REV
+    
+    style PR fill:#89dceb,color:#11111b
+    style AC fill:#f9e2af,color:#11111b
+    style REV fill:#89b4fa,color:#11111b
+    style M fill:#a6e3a1,color:#11111b
+    style ESC fill:#fab387,color:#11111b
+```
+
+**Guidelines du processus :**
+
 ```markdown
 # Code Review Guidelines
 
@@ -528,6 +565,32 @@ tags: [infrastructure, kubernetes]
 
 **Framework de décision d'escalade :** Comment structurer votre chaîne de communication de crise
 
+```mermaid
+flowchart TD
+    I[Incident Détecté] --> S{Évaluation Sévérité}
+    
+    S -->|Impact Business Majeur| P0[P0 - Critical]
+    S -->|Dégradation Service| P1[P1 - High]
+    S -->|Bug Significatif| P2[P2 - Medium]
+    S -->|Amélioration| P3[P3 - Low]
+    
+    P0 --> A0[Alerte Immédiate<br/>CEO, CTO, VP Eng<br/>< 5 minutes]
+    P1 --> A1[Notification<br/>Management + Tech Lead<br/>< 15 minutes]
+    P2 --> A2[Workflow Standard<br/>Équipe assignée<br/>< 1 heure]
+    P3 --> A3[Backlog Normal<br/>Prochaine planification]
+    
+    A0 --> R0[War Room<br/>Communication continue<br/>Status updates /30min]
+    A1 --> R1[Tech Call<br/>Status updates /2h]
+    A2 --> R2[Suivi standard<br/>Daily updates]
+    A3 --> R3[Process normal]
+    
+    style I fill:#f9e2af,color:#11111b
+    style P0 fill:#f38ba8,color:#11111b
+    style P1 fill:#fab387,color:#11111b
+    style P2 fill:#f9e2af,color:#11111b
+    style P3 fill:#a6e3a1,color:#11111b
+```
+
 **Niveaux d'escalade par sévérité :**
 - **P0 (Critical) :** Impact business majeur → Alerte immédiate C-Level
 - **P1 (High) :** Dégradation service → Notification équipe technique + management
@@ -751,13 +814,22 @@ Consultés: [Liste des personnes consultées]
 
 ### 5-15 personnes : L'équipe unique
 
-```
-              CTO
-               |
-┌──────────────┴──────────────┐
-│ Frontend │ Backend │ DevOps │
-│ (2-3)    │ (3-4)   │ (1-2)  │
-└──────────┴─────────┴────────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    FE[Frontend Team<br/>2-3 personnes]
+    BE[Backend Team<br/>3-4 personnes]
+    DO[DevOps Team<br/>1-2 personnes]
+    
+    CTO --> FE
+    CTO --> BE
+    CTO --> DO
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style FE fill:#89dceb,color:#11111b
+    style BE fill:#a6e3a1,color:#11111b
+    style DO fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -772,17 +844,30 @@ Consultés: [Liste des personnes consultées]
 
 ### 15-30 personnes : Équipes par composant
 
-```
-             CTO
-              |
-    ┌─────────┼──────────┐
-Frontend   Backend   Platform
-  Lead      Lead       Lead
-    |         |          |
- ┌──┴──┐   ┌──┴──┐    ┌──┴───┐
- │Dev  │   │Dev  │    │DevOps│
- │(4-5)│   │(5-6)│    │(2-3) │
- └─────┘   └─────┘    └──────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    FL[Frontend Lead]
+    BL[Backend Lead] 
+    PL[Platform Lead]
+    
+    FD[Frontend Devs<br/>4-5 personnes]
+    BD[Backend Devs<br/>5-6 personnes]
+    DO[DevOps Team<br/>2-3 personnes]
+    
+    CTO --> FL
+    CTO --> BL
+    CTO --> PL
+    
+    FL --> FD
+    BL --> BD
+    PL --> DO
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style FL fill:#89b4fa,color:#11111b
+    style BL fill:#89b4fa,color:#11111b
+    style PL fill:#89b4fa,color:#11111b
 ```
 
 **Avantages :**
@@ -797,19 +882,37 @@ Frontend   Backend   Platform
 
 ### 30-80 personnes : Équipes produit
 
-```
-                 CTO
-                  |
-    ┌─────────────┼──────────┐
-   Tribe A     Tribe B    Platform
-     |            |          |
- ┌───┴────┐   ┌───┴───┐   ┌──┴────┐
- │Squad 1 │   │Squad 3│   │ Infra │
- │(6-8)   │   │(6-8)  │   │(8-10) │
- │        │   └───────┘   └───────┘
- │Squad 2 │              
- │(6-8)   │              
- └────────┘              
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    TA[Tribe A<br/>Feature Teams]
+    TB[Tribe B<br/>Feature Teams]
+    PT[Platform Team]
+    
+    S1[Squad 1<br/>6-8 personnes<br/>Full-stack]
+    S2[Squad 2<br/>6-8 personnes<br/>Full-stack]
+    S3[Squad 3<br/>6-8 personnes<br/>Full-stack]
+    
+    IF[Infrastructure<br/>8-10 personnes<br/>DevOps/Platform]
+    
+    CTO --> TA
+    CTO --> TB
+    CTO --> PT
+    
+    TA --> S1
+    TA --> S2
+    TB --> S3
+    PT --> IF
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style TA fill:#a6e3a1,color:#11111b
+    style TB fill:#a6e3a1,color:#11111b
+    style PT fill:#f9e2af,color:#11111b
+    style S1 fill:#89dceb,color:#11111b
+    style S2 fill:#89dceb,color:#11111b
+    style S3 fill:#89dceb,color:#11111b
+    style IF fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -824,17 +927,41 @@ Frontend   Backend   Platform
 
 ### 80+ personnes : Organisation hybride
 
-```
-                   CTO
-                    |
-        ┌───────────┼────────────┐
-    VP Eng A    VP Eng B    VP Platform
-        |           |            |
-   ┌────┴──┐    ┌───┴───┐    ┌───┴────┐
-   │Tribe  │    │ Tribe │    │Platform│
-   │Mobile │    │ Web   │    │ Teams  │
-   │(3 sq.)│    │(4 sq.)│    │(5 sq.) │
-   └───────┘    └───────┘    └────────┘
+```mermaid
+graph TD
+    CTO[CTO]
+    
+    VPA[VP Engineering A<br/>Product Domain]
+    VPB[VP Engineering B<br/>Product Domain]
+    VPP[VP Platform<br/>Infrastructure]
+    
+    TM[Tribe Mobile<br/>3 squads<br/>18-24 personnes]
+    TW[Tribe Web<br/>4 squads<br/>24-32 personnes]
+    
+    PT1[Platform Team 1<br/>Infrastructure<br/>8-10 personnes]
+    PT2[Platform Team 2<br/>DevTools<br/>6-8 personnes]
+    PT3[Platform Team 3<br/>Data/ML<br/>10-12 personnes]
+    
+    CTO --> VPA
+    CTO --> VPB
+    CTO --> VPP
+    
+    VPA --> TM
+    VPB --> TW
+    
+    VPP --> PT1
+    VPP --> PT2
+    VPP --> PT3
+    
+    style CTO fill:#cba6f7,color:#11111b
+    style VPA fill:#f38ba8,color:#11111b
+    style VPB fill:#f38ba8,color:#11111b
+    style VPP fill:#f38ba8,color:#11111b
+    style TM fill:#a6e3a1,color:#11111b
+    style TW fill:#a6e3a1,color:#11111b
+    style PT1 fill:#fab387,color:#11111b
+    style PT2 fill:#fab387,color:#11111b
+    style PT3 fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
