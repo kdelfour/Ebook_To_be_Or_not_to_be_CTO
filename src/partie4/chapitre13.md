@@ -223,12 +223,6 @@ flowchart TD
     
     RR -.->|> 4h no response| ESC[Escalate to Tech Lead]
     ESC --> REV
-    
-    style PR fill:#89dceb,color:#11111b
-    style AC fill:#f9e2af,color:#11111b
-    style REV fill:#89b4fa,color:#11111b
-    style M fill:#a6e3a1,color:#11111b
-    style ESC fill:#fab387,color:#11111b
 ```
 
 **Guidelines du processus :**
@@ -584,11 +578,6 @@ flowchart TD
     A2 --> R2[Suivi standard<br/>Daily updates]
     A3 --> R3[Process normal]
     
-    style I fill:#f9e2af,color:#11111b
-    style P0 fill:#f38ba8,color:#11111b
-    style P1 fill:#fab387,color:#11111b
-    style P2 fill:#f9e2af,color:#11111b
-    style P3 fill:#a6e3a1,color:#11111b
 ```
 
 **Niveaux d'escalade par sévérité :**
@@ -825,11 +814,6 @@ graph TD
     CTO --> FE
     CTO --> BE
     CTO --> DO
-    
-    style CTO fill:#cba6f7,color:#11111b
-    style FE fill:#89dceb,color:#11111b
-    style BE fill:#a6e3a1,color:#11111b
-    style DO fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -863,11 +847,6 @@ graph TD
     FL --> FD
     BL --> BD
     PL --> DO
-    
-    style CTO fill:#cba6f7,color:#11111b
-    style FL fill:#89b4fa,color:#11111b
-    style BL fill:#89b4fa,color:#11111b
-    style PL fill:#89b4fa,color:#11111b
 ```
 
 **Avantages :**
@@ -904,15 +883,6 @@ graph TD
     TA --> S2
     TB --> S3
     PT --> IF
-    
-    style CTO fill:#cba6f7,color:#11111b
-    style TA fill:#a6e3a1,color:#11111b
-    style TB fill:#a6e3a1,color:#11111b
-    style PT fill:#f9e2af,color:#11111b
-    style S1 fill:#89dceb,color:#11111b
-    style S2 fill:#89dceb,color:#11111b
-    style S3 fill:#89dceb,color:#11111b
-    style IF fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
@@ -952,16 +922,6 @@ graph TD
     VPP --> PT1
     VPP --> PT2
     VPP --> PT3
-    
-    style CTO fill:#cba6f7,color:#11111b
-    style VPA fill:#f38ba8,color:#11111b
-    style VPB fill:#f38ba8,color:#11111b
-    style VPP fill:#f38ba8,color:#11111b
-    style TM fill:#a6e3a1,color:#11111b
-    style TW fill:#a6e3a1,color:#11111b
-    style PT1 fill:#fab387,color:#11111b
-    style PT2 fill:#fab387,color:#11111b
-    style PT3 fill:#fab387,color:#11111b
 ```
 
 **Avantages :**
