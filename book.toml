@@ -2,8 +2,21 @@
 authors = ["Kevin Delfour"]
 language = "fr"
 src = "src"
-title = "Etre CTO ..."
+title = "To be or not to be... a CTO"
 description = "Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ceux qui aspirent à ce rôle ou qui débutent. L'approche se veut pratique et humaine, mêlant conseils opérationnels et retours d'expérience authentiques."
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+theme = "theme"
+smart-punctuation = true
+mathjax-support = false
+copy-fonts = true
+default-theme = "latte"
+preferred-dark-theme = "mocha"
+additional-css = ["theme/catppuccin.css", "theme/catppuccin-admonish.css"]
+additional-js = ["theme/mermaid.min.js", "theme/mermaid-init.js"]
 
 [output.html.playground]
 editable = true

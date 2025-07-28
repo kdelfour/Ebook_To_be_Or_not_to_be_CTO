@@ -8,7 +8,8 @@ Ou alors vous êtes entrepreneur et vous vous demandez si vous avez besoin d'un 
 
 Peut-être même que vous êtes déjà CTO depuis quelques mois, et que vous vous réveillez chaque matin en vous demandant si quelqu'un va finir par découvrir que vous improvisez la moitié du temps.
 
-Bonne nouvelle : c'est normal. Mauvaise nouvelle : ça ne va pas s'arranger tout seul.
+C'est normal. Même les CTOs les plus expérimentés improvisent parfois.
+Ça ne va pas s'arranger tout seul.
 
 ## Le syndrome du "développeur promu"
 
