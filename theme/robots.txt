@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/sitemap.xml
