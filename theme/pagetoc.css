@@ -83,31 +83,69 @@
     opacity: 0.8;
 }
 
-/* Bouton toggle pour masquer/afficher */
+/* Bouton toggle style burger menu */
 .page-toc-toggle {
     position: fixed;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-    background: var(--links);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    background: var(--bg);
+    border: 2px solid var(--links);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
     cursor: pointer;
-    z-index: 101;
+    z-index: 1002;
     display: none;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
 
 .page-toc-toggle:hover {
-    transform: translateY(-50%) scale(1.1);
+    background: var(--table-header-bg);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Icône burger */
+.burger-icon {
+    width: 20px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.burger-line {
+    width: 100%;
+    height: 2px;
+    background: var(--links);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Animation burger → croix quand TOC ouverte */
+.page-toc.show-mobile + .page-toc-toggle .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.page-toc.show-mobile + .page-toc-toggle .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.page-toc.show-mobile + .page-toc-toggle .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Quand la TOC est visible, décaler le bouton toggle à gauche */
+.page-toc.show-mobile + .page-toc-toggle {
+    right: 280px;
+}
+
 
 .page-toc.collapsed {
     display: none;
@@ -117,14 +155,39 @@
     display: flex;
 }
 
-/* Responsivité mobile */
-@media screen and (max-width: 1200px) {
+/* Responsivité pour éviter le chevauchement */
+@media screen and (max-width: 1400px) {
     .page-toc {
         display: none;
     }
     
+    /* Sur écrans moyens, même position qu'en grand écran mais en overlay */
+    .page-toc.show-mobile {
+        display: block;
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 240px;
+        max-height: 70vh;
+        z-index: 1001;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
     .page-toc-toggle {
         display: flex;
+    }
+}
+
+/* Écrans larges - TOC visible seulement si assez d'espace */
+@media screen and (min-width: 1401px) {
+    .sidebar-visible .page-toc {
+        right: 20px;
+    }
+    
+    /* Si sidebar fermée, plus d'espace pour la TOC */
+    .sidebar-hidden .page-toc {
+        right: 20px;
     }
 }
 

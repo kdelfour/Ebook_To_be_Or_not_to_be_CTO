@@ -13,10 +13,16 @@
         pageToc.className = 'page-toc';
         pageToc.id = 'page-toc';
 
-        // Créer le bouton toggle
+        // Créer le bouton toggle avec menu burger
         pageTocToggle = document.createElement('button');
         pageTocToggle.className = 'page-toc-toggle';
-        pageTocToggle.innerHTML = '📑';
+        pageTocToggle.innerHTML = `
+            <div class="burger-icon">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        `;
         pageTocToggle.setAttribute('aria-label', 'Afficher/masquer la table des matières');
         pageTocToggle.setAttribute('title', 'Table des matières du chapitre');
 
@@ -36,9 +42,18 @@
         document.body.appendChild(pageToc);
         document.body.appendChild(pageTocToggle);
 
-        // État initial
+        // État initial selon la taille d'écran
+        const isMobileView = window.innerWidth <= 1400;
+        
         if (isCollapsed) {
-            pageToc.classList.add('collapsed');
+            if (isMobileView) {
+                // Sur mobile, la TOC est masquée par défaut (pas de classe show-mobile)
+            } else {
+                pageToc.classList.add('collapsed');
+            }
+        } else if (isMobileView) {
+            // Sur mobile, si pas collapsed, afficher avec show-mobile
+            pageToc.classList.add('show-mobile');
         }
 
         // Événements
@@ -49,7 +64,16 @@
 
     function toggleToc() {
         isCollapsed = !isCollapsed;
-        pageToc.classList.toggle('collapsed', isCollapsed);
+        
+        // Sur écrans moyens/petits, utiliser show-mobile au lieu de collapsed
+        const isMobileView = window.innerWidth <= 1400;
+        
+        if (isMobileView) {
+            pageToc.classList.toggle('show-mobile', !isCollapsed);
+        } else {
+            pageToc.classList.toggle('collapsed', isCollapsed);
+        }
+        
         localStorage.setItem('page-toc-collapsed', isCollapsed);
     }
 

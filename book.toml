@@ -4,6 +4,7 @@ language = "fr"
 src = "src"
 title = "To be or not to be... a CTO"
 description = "Un guide collaboratif écrit par des CTOs pour partager leur expérience avec ceux qui aspirent à ce rôle ou qui débutent. L'approche se veut pratique et humaine, mêlant conseils opérationnels et retours d'expérience authentiques."
+repository = "https://github.com/kdelfour/Ebook_To_be_Or_not_to_be_CTO"
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
@@ -15,8 +16,8 @@ mathjax-support = false
 copy-fonts = true
 default-theme = "latte"
 preferred-dark-theme = "mocha"
-additional-css = ["theme/catppuccin.css", "theme/catppuccin-admonish.css", "theme/pagetoc.css"]
-additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/pagetoc.js"]
+additional-css = ["theme/catppuccin.css", "theme/catppuccin-admonish.css", "theme/pagetoc.css", "theme/navigation.css"]
+additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/pagetoc.js", "theme/navigation.js"]
 
 [output.html.playground]
 editable = true
