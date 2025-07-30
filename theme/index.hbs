@@ -13,6 +13,50 @@
     {{/if}}
 
 
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Kevin Delfour">
+    <meta name="keywords" content="CTO, Chief Technology Officer, leadership, technologie, management, guide, livre, développement, équipe, stratégie">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:image" content="https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/illustrations/cover.png">
+    <meta property="og:site_name" content="To be or not to be... a CTO">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/">
+    <meta property="twitter:title" content="{{ title }}">
+    <meta property="twitter:description" content="{{ description }}">
+    <meta property="twitter:image" content="https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/illustrations/cover.png">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "{{ book_title }}",
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Delfour"
+      },
+      "description": "{{ description }}",
+      "url": "https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/",
+      "inLanguage": "fr",
+      "genre": "Management, Leadership, Technology",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GitHub Pages"
+      },
+      "image": "https://kdelfour.github.io/To-be-or-not-to-be-a-CTO/illustrations/cover.png"
+    }
+    </script>
+
     <!-- Custom HTML head -->
     {{> head}}
 
