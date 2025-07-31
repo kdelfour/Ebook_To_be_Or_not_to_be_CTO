@@ -1,0 +1,25 @@
+{
+  "name": "be-cto",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.35.2",
+    "@astrojs/starlight-tailwind": "^4.0.1",
+    "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.6.1",
+    "astro-icon": "^1.1.5",
+    "astro-mermaid": "^1.0.4",
+    "mermaid": "^11.9.0",
+    "sharp": "^0.34.2",
+    "starlight-contributor-list": "^0.3.0",
+    "tailwindcss": "^4.1.11"
+  }
+}
