@@ -8,23 +8,21 @@
     // Enregistrer le Service Worker
     function registerServiceWorker() {
         if ('serviceWorker' in navigator) {
-            // Utiliser le chemin relatif à la racine du livre
+            // Utiliser le chemin absolu vers le Service Worker
             const rootPath = getRootPath();
-            const swPath = rootPath + 'sw.js';
+            const swPath = getServiceWorkerPath();
             
-            navigator.serviceWorker.register(swPath, { scope: rootPath })
+            navigator.serviceWorker.register(swPath, { scope: '/' })
                 .then((registration) => {
-                    console.log('[PWA] Service Worker enregistré:', registration.scope);
                     swRegistration = registration;
                     
                     // Vérifier les mises à jour
                     registration.addEventListener('updatefound', () => {
                         const newWorker = registration.installing;
-                        console.log('[PWA] Nouvelle version du Service Worker détectée');
                         
                         newWorker.addEventListener('statechange', () => {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                showUpdateNotification();
+                                // showUpdateNotification(); // Notifications désactivées
                             }
                         });
                     });
@@ -36,7 +34,7 @@
             // Écouter les messages du Service Worker
             navigator.serviceWorker.addEventListener('message', (event) => {
                 if (event.data && event.data.type === 'CACHE_COMPLETE') {
-                    showOfflineReadyNotification();
+                    // showOfflineReadyNotification(); // Notifications désactivées
                 }
             });
         }
@@ -45,7 +43,6 @@
     // Gérer l'événement d'installation PWA
     function handleInstallPrompt() {
         window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('[PWA] Invite d\'installation PWA détectée');
             e.preventDefault();
             deferredPrompt = e;
             showInstallButton();
@@ -53,9 +50,8 @@
 
         // Détecter si l'app est déjà installée
         window.addEventListener('appinstalled', () => {
-            console.log('[PWA] Application installée');
             hideInstallButton();
-            showInstalledNotification();
+            // showInstalledNotification(); // Notifications désactivées
             deferredPrompt = null;
         });
     }
@@ -87,12 +83,11 @@
         if (deferredPrompt) {
             deferredPrompt.prompt();
             const { outcome } = await deferredPrompt.userChoice;
-            console.log('[PWA] Choix utilisateur:', outcome);
             
             if (outcome === 'accepted') {
-                console.log('[PWA] Installation acceptée');
+                // Installation acceptée
             } else {
-                console.log('[PWA] Installation refusée');
+                // Installation refusée
             }
             
             deferredPrompt = null;
@@ -117,44 +112,19 @@
         }
     }
 
-    // Afficher une notification de mise à jour
+    // Afficher une notification de mise à jour (désactivée)
     function showUpdateNotification() {
-        const notification = createNotification(
-            'Nouvelle version disponible',
-            'Cliquez pour mettre à jour',
-            'update',
-            () => {
-                if (swRegistration && swRegistration.waiting) {
-                    swRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
-                    window.location.reload();
-                }
-            }
-        );
-        document.body.appendChild(notification);
+        // Notifications désactivées
     }
 
-    // Afficher une notification de disponibilité hors-ligne
+    // Afficher une notification de disponibilité hors-ligne (désactivée)
     function showOfflineReadyNotification() {
-        const notification = createNotification(
-            'Livre disponible hors-ligne',
-            'Vous pouvez maintenant lire sans connexion internet',
-            'offline',
-            null,
-            5000
-        );
-        document.body.appendChild(notification);
+        // Notifications désactivées
     }
 
-    // Afficher une notification d'installation
+    // Afficher une notification d'installation (désactivée)
     function showInstalledNotification() {
-        const notification = createNotification(
-            'Application installée',
-            'Le livre est maintenant accessible depuis votre écran d\'accueil',
-            'installed',
-            null,
-            4000
-        );
-        document.body.appendChild(notification);
+        // Notifications désactivées
     }
 
     // Créer une notification
@@ -199,12 +169,6 @@
         function updateOnlineStatus() {
             const isOnline = navigator.onLine;
             document.body.classList.toggle('pwa-offline', !isOnline);
-            
-            if (!isOnline) {
-                console.log('[PWA] Mode hors-ligne activé');
-            } else {
-                console.log('[PWA] Connexion rétablie');
-            }
         }
 
         window.addEventListener('online', updateOnlineStatus);
@@ -215,7 +179,32 @@
     // Obtenir le chemin vers la racine
     function getRootPath() {
         // Utiliser la variable globale path_to_root définie par mdBook
-        return window.path_to_root || './';
+        if (window.path_to_root) {
+            return window.path_to_root;
+        }
+        
+        // Calculer le chemin vers la racine basé sur l'URL actuelle
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/').filter(segment => segment !== '');
+        
+        // Si on est à la racine, utiliser ./
+        if (pathSegments.length === 0) {
+            return './';
+        }
+        
+        // Sinon, remonter vers la racine
+        const upLevels = pathSegments.length;
+        const rootPath = '../'.repeat(upLevels);
+        
+        return rootPath;
+    }
+
+    // Obtenir le chemin vers le Service Worker
+    function getServiceWorkerPath() {
+        // Le Service Worker est servi depuis la racine
+        const rootPath = getRootPath();
+        const swPath = rootPath + 'sw.js';
+        return swPath;
     }
 
     // Initialiser PWA
@@ -226,8 +215,6 @@
             return;
         }
 
-        console.log('[PWA] Initialisation PWA');
-        
         registerServiceWorker();
         handleInstallPrompt();
         handleOfflineStatus();

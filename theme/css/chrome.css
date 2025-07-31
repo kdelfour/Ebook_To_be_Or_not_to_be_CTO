@@ -159,7 +159,9 @@ html:not(.js) .left-buttons button {
 
 .nav-wrapper {
     margin-block-start: 50px;
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-nav-chapters {
@@ -171,34 +173,33 @@ html:not(.js) .left-buttons button {
     background-color: var(--sidebar-bg);
 }
 
-/* Only Firefox supports flow-relative values */
-.previous { float: left; }
-[dir=rtl] .previous { float: right; }
+/* Suppression des floats pour permettre le centrage flexbox */
+.previous { float: none; }
+[dir=rtl] .previous { float: none; }
 
-/* Only Firefox supports flow-relative values */
+/* Suppression des floats pour permettre le centrage flexbox */
 .next {
-    float: right;
-    right: var(--page-padding);
+    float: none;
+    right: auto;
 }
 [dir=rtl] .next {
-    float: left;
-    right: unset;
-    left: var(--page-padding);
+    float: none;
+    right: auto;
+    left: auto;
 }
 
 /* Use the correct buttons for RTL layouts*/
 [dir=rtl] .previous i.fa-angle-left:before {content:"\f105";}
 [dir=rtl] .next i.fa-angle-right:before { content:"\f104"; }
 
+/* Navigation toujours visible sur tous les écrans */
 @media only screen and (max-width: 1080px) {
-    .nav-wide-wrapper { display: none; }
-    .nav-wrapper { display: block; }
+    .nav-wrapper { display: flex; }
 }
 
 /* sidebar-visible */
 @media only screen and (max-width: 1380px) {
-    #sidebar-toggle-anchor:checked ~ .page-wrapper .nav-wide-wrapper { display: none; }
-    #sidebar-toggle-anchor:checked ~ .page-wrapper .nav-wrapper { display: block; }
+    #sidebar-toggle-anchor:checked ~ .page-wrapper .nav-wrapper { display: flex; }
 }
 
 /* Inline code */

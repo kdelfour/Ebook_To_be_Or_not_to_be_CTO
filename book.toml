@@ -17,8 +17,8 @@ copy-fonts = true
 default-theme = "latte"
 preferred-dark-theme = "mocha"
 additional-css = ["theme/catppuccin.css", "theme/catppuccin-admonish.css", "theme/pagetoc.css", "theme/navigation.css"]
-additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/pagetoc.js", "theme/navigation.js", "theme/pwa.js"]
-copy-files = ["theme/manifest.json", "theme/sw.js", "theme/offline.html"]
+additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/pagetoc.js", "theme/navigation.js", "theme/pwa.js", "sw.js"]
+copy-files = ["manifest.json", "sw.js", "offline.html"]
 
 [output.html.playground]
 editable = true

@@ -50,17 +50,17 @@
     pointer-events: none;
 }
 
-/* Bouton sommaire supprimé */
-
-/* Navigation standard restaurée avec améliorations subtiles */
+/* Navigation centrée pour tous les écrans */
 .nav-wrapper {
     margin-top: 3rem;
     padding: 2rem 0;
     border-top: 1px solid var(--table-border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.mobile-nav-chapters,
-.nav-chapters {
+.mobile-nav-chapters {
     display: flex;
     align-items: center;
     padding: 16px 24px;
@@ -77,8 +77,7 @@
     min-height: 60px;
 }
 
-.mobile-nav-chapters:hover,
-.nav-chapters:hover {
+.mobile-nav-chapters:hover {
     border-color: var(--links);
     background: var(--table-header-bg);
     transform: translateY(-2px);
@@ -87,150 +86,47 @@
     text-decoration: none;
 }
 
-.mobile-nav-chapters i,
-.nav-chapters i {
+.mobile-nav-chapters i {
     font-size: 2rem;
     margin: 0 12px;
     transition: transform 0.3s ease;
 }
 
-.mobile-nav-chapters.previous:hover i,
-.nav-chapters.previous:hover i {
+.mobile-nav-chapters.previous:hover i {
     transform: translateX(-4px);
 }
 
-.mobile-nav-chapters.next:hover i,
-.nav-chapters.next:hover i {
-    transform: translateX(4px);
-}
-
-/* Layout pour navigation large */
-.nav-wide-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 2rem 0;
-}
-
-.nav-wide-wrapper .nav-chapters {
-    flex: 1;
-    max-width: 45%;
-}
-
-.nav-wide-wrapper .nav-chapters.next {
-    text-align: right;
-    justify-content: flex-end;
-}
-
-.mobile-nav-chapters i,
-.nav-chapters i {
-    font-size: 2rem;
-    margin: 0 12px;
-    transition: transform 0.3s ease;
-}
-
-.mobile-nav-chapters.previous:hover i,
-.nav-chapters.previous:hover i {
-    transform: translateX(-4px);
-}
-
-.mobile-nav-chapters.next:hover i,
-.nav-chapters.next:hover i {
+.mobile-nav-chapters.next:hover i {
     transform: translateX(4px);
 }
 
 /* Ajouter du contenu aux boutons de navigation */
-.mobile-nav-chapters.previous::before,
-.nav-chapters.previous::before {
+.mobile-nav-chapters.previous::after {
     content: "Précédent";
     font-size: 1.2rem;
     opacity: 0.7;
     margin-right: 8px;
 }
 
-.mobile-nav-chapters.next::after,
-.nav-chapters.next::after {
+.mobile-nav-chapters.next::after {
     content: "Suivant";
     font-size: 1.2rem;
     opacity: 0.7;
     margin-left: 8px;
 }
 
-/* Layout pour navigation large */
-.nav-wide-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    padding: 2rem 0;
-}
-
-.nav-wide-wrapper .nav-chapters {
-    flex: 1;
-    max-width: 45%;
-}
-
-.nav-wide-wrapper .nav-chapters.next {
-    text-align: right;
-    justify-content: flex-end;
-}
-
-/* Navigation mobile simplifiée */
+/* Navigation mobile (petits écrans) */
 @media screen and (max-width: 768px) {
-    .nav-wide-wrapper {
-        display: none;
-    }
-    
     .nav-wrapper {
-        display: flex;
-        justify-content: space-between;
         gap: 1rem;
     }
     
     .mobile-nav-chapters {
         flex: 1;
-        padding: 12px 16px;
+        padding: 12px 20px;
         font-size: 1.2rem;
         min-height: 50px;
-    }
-    
-    .mobile-nav-chapters.previous::before,
-    .mobile-nav-chapters.next::after {
-        display: none;
-    }
-    
-    .back-to-toc {
-        bottom: 15px;
-        left: 15px;
-        padding: 10px 16px;
-        font-size: 1.2rem;
-    }
-    
-    .back-to-toc span {
-        display: none;
-    }
-}
-
-/* Responsivité mobile pour navigation standard */
-@media screen and (max-width: 768px) {
-    .nav-wide-wrapper {
-        display: none;
-    }
-    
-    .nav-wrapper {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-    
-    .mobile-nav-chapters {
-        flex: 1;
-        padding: 12px 16px;
-        font-size: 1.2rem;
-        min-height: 50px;
+        gap: 8px;
     }
     
     .reading-progress {
@@ -238,6 +134,20 @@
         right: 15px;
         width: 50px;
         height: 50px;
+    }
+}
+
+/* Navigation pour écrans moyens (tablettes) */
+@media screen and (min-width: 769px) and (max-width: 1080px) {
+    .nav-wrapper {
+        gap: 2rem;
+    }
+    
+    .mobile-nav-chapters {
+        padding: 16px 24px;
+        font-size: 1.4rem;
+        min-height: 60px;
+        gap: 12px;
     }
 }
 
@@ -265,22 +175,6 @@
     }
 }
 
-/* Masquer la navigation sur desktop quand mobile est active */
-@media screen and (min-width: 769px) {
-    .nav-wrapper .mobile-nav-chapters {
-        display: none;
-    }
-}
-
-/* Styles pour les titres des chapitres dans la navigation */
-.nav-chapter-title {
-    display: block;
-    font-size: 1.1rem;
-    opacity: 0.8;
-    margin-top: 4px;
-    font-weight: normal;
-}
-
 /* Animation de la barre de progression */
 @keyframes progressGlow {
     0% { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
@@ -292,21 +186,8 @@
     animation: progressGlow 0.5s ease;
 }
 
-/* Ajustements pour la sidebar visible */
-.sidebar-visible .back-to-toc {
-    left: 20px;
-}
-
-@media screen and (min-width: 1080px) {
-    .sidebar-visible .back-to-toc {
-        left: 20px;
-    }
-}
-
 /* États de focus pour l'accessibilité */
-.back-to-toc:focus,
-.mobile-nav-chapters:focus,
-.nav-chapters:focus {
+.mobile-nav-chapters:focus {
     outline: 2px solid var(--links);
     outline-offset: 2px;
 }
