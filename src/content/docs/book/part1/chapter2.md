@@ -34,7 +34,7 @@ Spoiler : ça ne marche pas. Vous allez soit mal manager, soit mal coder, soit l
 **Phase 2 : La colère**
 "Mais c'est n'importe quoi ! Je suis un développeur, pas un manager ! Qui a eu cette idée idiote ?"
 
-Normal. Laissez-vous le temps d'être en colère. Guelez un bon coup (pas sur votre équipe, s'il vous plaît).
+Normal. Laissez-vous le temps d'être en colère. Gueulez un bon coup (pas sur votre équipe, s'il vous plaît).
 
 **Phase 3 : Le marchandage**
 "OK, je vais coder juste les parties critiques. Et peut-être faire un peu de prototypage. Et quelques code reviews approfondies."

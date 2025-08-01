@@ -2,8 +2,8 @@
 title: Être CTO
 head:
   - tag: title
-    content: Starlight 🌟 Build documentation sites with Astro
-description: Starlight helps you build beautiful, high-performance documentation websites with Astro.
+    content: Être CTO, un livre écrit par des CTOs pour les CTOs.
+description: Un guide pratique et inspirant écrit par des CTOs expérimentés pour partager leur expérience avec ceux qui aspirent à ce rôle.
 template: splash
 lastUpdated: true
 hero:
@@ -12,9 +12,11 @@ hero:
   image:
     file: ../../assets/cover.png
   actions:
-    - text: Commencer la lecture
+    - text: 🚀 Commencer la lecture
       icon: right-arrow
-      link: /preface/
+      link: book/preface/
+      attrs:
+        class: bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1
     - text: Contribuer
       icon: github
       variant: minimal
@@ -22,185 +24,242 @@ hero:
 ---
 
 import { Icon } from 'astro-icon/components';
-import { Card } from '@astrojs/starlight/components';
+import { Card, LinkButton } from '@astrojs/starlight/components';
+
+<style>{`
+  .fade-in {
+    animation: fadeIn 0.6s ease-in;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .pulse-glow {
+    animation: pulseGlow 2s infinite;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+    }
+  }
+  
+  .testimonial-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+`}</style>
 
 <main>
-    <div class="flex flex-row items-center justify-center gap-12 text-sm text-gray-500 dark:text-gray-400 mb-16">
-      <div class="flex flex-row items-center mt-4">
-        <Icon name="mdi:book-open-page-variant" class="w-4 h-4 mr-2" />
-        <span>~250 pages</span>
-      </div>
-      <div class="flex flex-row items-center">
-        <Icon name="mdi:lightbulb" class="w-4 h-4 mr-2" />
-        <span>Guide pratique</span>
-      </div>
-      <div class="flex flex-row items-center">
-        <Icon name="mdi:account-group" class="w-4 h-4 mr-2" />
-        <span>Retours d'expérience</span>
-      </div>
-    </div>
-
-  <section class="bg-white dark:bg-gray-900">
+  <section class="fade-in">
     <div class="mb-20 pt-16 dark:border-gray-700">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full">
-          <Icon name="mdi:account-group" class="w-6 h-6 text-red-600 dark:text-red-400" />
+      <div class="text-center mb-8 slide-up">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-full shadow-lg pulse-glow">
+          <Icon name="mdi:account-group" class="w-8 h-8 text-white" />
         </div>
       </div>
-      <h2 class="text-3xl font-bold text-center mb-12">Pour qui ce livre ?</h2>
-      <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
-        <div class="flex flex-row items-center">
-			<div class="flex justify-center items-center mb-4 w-32 h-32 rounded-full bg-primary-100 dark:bg-primary-900 mx-auto">
-				<Icon name="mdi:code" class="w-32 h-32 mr-5 text-primary-600 dark:text-primary-300" />
-			</div>
-			<div class="text-left">
-			<h3 class="mb-2 text-xl font-bold dark:text-white">Développeurs seniors</h3>
-			<p class="text-gray-500 dark:text-gray-400">
-				Aspirant au poste de CTO et souhaitant comprendre la transition technique vers management.
-			</p>
-			</div>
-		</div>
-		<div class="flex flex-row items-center">
-			<div class="flex justify-center items-center mb-4 w-32 h-32 rounded-full bg-primary-100 dark:bg-primary-900 mx-auto">
-				<Icon name="mdi:book" class="w-32 h-32 mr-5 text-primary-600 dark:text-primary-300" />
-			</div>
-			<div class="text-left">
-			<h3 class="mb-2 text-xl font-bold dark:text-white">Nouveaux CTOs</h3>
-			<p class="text-gray-500 dark:text-gray-400">
-				En phase d'apprentissage et cherchant des repères pratiques pour bien démarrer.
-			</p>
-			</div>
-		</div>
-		<div class="flex flex-row items-center">
-			<div class="flex justify-center items-center mb-4 w-32 h-32 rounded-full bg-primary-100 dark:bg-primary-900 mx-auto">
-				<Icon name="mdi:building" class="w-32 h-32 mr-5 text-primary-600 dark:text-primary-300" />
-			</div>
-			<div class="text-left">
-			<h3 class="mb-2 text-xl font-bold dark:text-white">Entrepreneur.e.s</h3>
-			<p class="text-gray-500 dark:text-gray-400">
-				En phase d'apprentissage et cherchant des repères pratiques pour bien démarrer.
-			</p>
-			</div>
-		</div>
-		<div class="flex flex-row items-center">
-			<div class="flex justify-center items-center mb-4 w-32 h-32 rounded-full bg-primary-100 dark:bg-primary-900 mx-auto">
-				<Icon name="mdi:users" class="w-32 h-32 mr-5 text-primary-600 dark:text-primary-300" />
-			</div>
-			<div class="text-left">
-			<h3 class="mb-2 text-xl font-bold dark:text-white">Managers tech</h3>
-			<p class="text-gray-500 dark:text-gray-400">
-				En transition vers des responsabilités CTO et cherchant à évoluer.
-			</p>
-			</div>
-		</div>
+      <h2 class="text-4xl font-bold text-center mb-4 gradient-text slide-up">Pour qui ce livre ?</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto slide-up">
+        Ce livre s'adresse à tous ceux qui veulent réussir leur transition vers le rôle de CTO, que ce soit aujourd'hui ou demain.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="hover-scale">
+          <Card title="🚀 Développeurs seniors" >
+            <div class="space-y-3">
+              <p class="font-medium text-blue-700 dark:text-blue-300">Docker ✓ Migration prod ✓ Poste de CTO ?</p>
+              <p>Coder 70h/semaine et manager une équipe, ce n'est pas le même métier. Ce livre va vous éviter de découvrir ça à vos dépens.</p>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic">
+                "De l'architecture technique au leadership humain"
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="🎯 Nouveaux CTOs" >
+            <div class="space-y-3">
+              <p class="font-medium text-green-700 dark:text-green-300">Syndrome de l'imposteur ? Normal !</p>
+              <p>Vous vous réveillez chaque matin en vous demandant si quelqu'un va découvrir que vous improvisez la moitié du temps. Même les plus expérimentés improvisent parfois.</p>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic">
+                "Improviser intelligemment, c'est tout un art"
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="💡 Entrepreneur.e.s">
+            <div class="space-y-3">
+              <p class="font-medium text-purple-700 dark:text-purple-300">Code à 2h du matin = Pas scalable</p>
+              <p>Vous vous demandez si vous avez besoin d'un CTO ou si vous pouvez continuer à tout faire vous-même. Spoiler : vous ne pouvez pas tout faire.</p>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic">
+                "Déléguer pour mieux régner"
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="📈 Managers tech">
+            <div class="space-y-3">
+              <p class="font-medium text-orange-700 dark:text-orange-300">Prêt pour le niveau supérieur ?</p>
+              <p>Entre choisir React vs Vue.js et choisir entre recruter un senior à 65K€ ou deux juniors à 35K€, il y a un monde.</p>
+              <div class="text-sm text-gray-500 dark:text-gray-400 italic">
+                "Le saut qualitatif vers le business"
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
+  <section class="fade-in">
     <div class="mb-20 pt-16 border-t border-gray-200 dark:border-gray-700">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full">
-          <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="text-center mb-8 slide-up">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full shadow-lg pulse-glow">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
         </div>
       </div>
-      <h2 class="text-3xl font-bold text-center mb-12">Structure du livre</h2>
+      <h2 class="text-4xl font-bold text-center mb-4 gradient-text slide-up">Structure du livre</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto slide-up">
+        Un parcours progressif en 5 chapitres pour maîtriser tous les aspects du rôle de CTO
+      </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div class="space-y-8">
-          <div class="flex items-start space-x-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+          <div class="flex items-start space-x-6 hover-scale p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800">
+            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg pulse-glow">
               1
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-3">Devenir CTO</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                Comprendre le rôle, la transition technique vers management, et construire sa vision tech.
+              <h3 class="text-xl font-semibold mb-3 text-blue-800 dark:text-blue-200">🎯 Devenir CTO</h3>
+              <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed font-medium">
+                Comprendre le rôle, maîtriser la transition technique vers management, et construire sa vision tech.
               </p>
-              <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                <li>• Le rôle de CTO démystifié</li>
-                <li>• La transition technique → management</li>
-                <li>• Se positionner dans l'organisation</li>
-                <li>• Construire sa vision tech</li>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Le rôle de CTO démystifié</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>La transition technique → management</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Se positionner dans l'organisation</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>Construire sa vision tech</li>
               </ul>
             </div>
           </div>
 
-          <div class="flex items-start space-x-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+          <div class="flex items-start space-x-6 hover-scale p-6 rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800">
+            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg pulse-glow">
               2
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-3">Management & Leadership</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                Recruter, développer et motiver son équipe tout en créant une culture d'équipe saine.
+              <h3 class="text-xl font-semibold mb-3 text-green-800 dark:text-green-200">👥 Management & Leadership</h3>
+              <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed font-medium">
+                Recruter, développer et motiver son équipe tout en créant une culture d'équipe saine et productive.
               </p>
-              <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                <li>• Recruter et fidéliser son équipe</li>
-                <li>• Développer et motiver les talents</li>
-                <li>• Culture d'équipe et méthodologies</li>
-                <li>• Gérer les conflits et situations critiques</li>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Recruter et fidéliser son équipe</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Développer et motiver les talents</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Culture d'équipe et méthodologies</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Gérer les conflits et situations critiques</li>
               </ul>
             </div>
           </div>
 
-          <div class="flex items-start space-x-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+          <div class="flex items-start space-x-6 hover-scale p-6 rounded-2xl bg-gradient-to-r from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 border border-purple-200 dark:border-purple-800">
+            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg pulse-glow">
               3
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-3">Stratégie & Technique</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                Prendre les bonnes décisions techniques et aligner la tech avec les objectifs business.
+              <h3 class="text-xl font-semibold mb-3 text-purple-800 dark:text-purple-200">⚡ Stratégie & Technique</h3>
+              <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed font-medium">
+                Prendre les bonnes décisions techniques et aligner parfaitement la tech avec les objectifs business.
               </p>
-              <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                <li>• Architecture et choix techniques</li>
-                <li>• Innovation et veille technologique</li>
-                <li>• Product et alignement business</li>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Architecture et choix techniques</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Innovation et veille technologique</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Product et alignement business</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div class="space-y-8">
-          <div class="flex items-start space-x-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+          <div class="flex items-start space-x-6 hover-scale p-6 rounded-2xl bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border border-orange-200 dark:border-orange-800">
+            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg pulse-glow">
               4
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-3">Opérationnel & Croissance</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                Gérer budget, processus et accompagner la croissance de l'organisation.
+              <h3 class="text-xl font-semibold mb-3 text-orange-800 dark:text-orange-200">📊 Opérationnel & Croissance</h3>
+              <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed font-medium">
+                Maîtriser budget, processus et accompagner efficacement la croissance de l'organisation.
               </p>
-              <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                <li>• Budget et ressources</li>
-                <li>• Processus et organisation</li>
-                <li>• Scaling et croissance</li>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Budget et ressources</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Processus et organisation</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Scaling et croissance</li>
               </ul>
             </div>
           </div>
 
-          <div class="flex items-start space-x-6">
-            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
+          <div class="flex items-start space-x-6 hover-scale p-6 rounded-2xl bg-gradient-to-r from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border border-red-200 dark:border-red-800">
+            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg pulse-glow">
               5
             </div>
             <div>
-              <h3 class="text-xl font-semibold mb-3">Se développer comme CTO</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
-                Grandir dans son rôle et devenir un leader influent.
+              <h3 class="text-xl font-semibold mb-3 text-red-800 dark:text-red-200">🚀 Se développer comme CTO</h3>
+              <p class="text-gray-700 dark:text-gray-200 mb-3 leading-relaxed font-medium">
+                Grandir continuellement dans son rôle et devenir un leader véritablement influent.
               </p>
-              <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
-                <li>• Développement personnel et leadership</li>
-                <li>• Communication et influence</li>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                <li class="flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Développement personnel et leadership</li>
+                <li class="flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Communication et influence</li>
               </ul>
             </div>
           </div>
 
-          <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-6 rounded-xl border border-blue-200 dark:border-blue-800">
-            <h4 class="font-semibold mb-3 text-blue-800 dark:text-blue-200">📚 Annexes</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-              Glossaire, ressources recommandées, templates téléchargeables et contact des co-auteurs.
+          <div class="bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-indigo-900/20 dark:to-blue-800/20 p-8 rounded-2xl border border-indigo-200 dark:border-indigo-800 hover-scale">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                <span class="text-white font-bold text-lg">📚</span>
+              </div>
+              <h4 class="font-bold text-lg text-indigo-800 dark:text-indigo-200">Annexes Bonus</h4>
+            </div>
+            <p class="text-gray-700 dark:text-gray-200 leading-relaxed font-medium">
+              Glossaire complet, ressources recommandées, templates téléchargeables et contact direct des co-auteurs pour aller plus loin.
             </p>
           </div>
         </div>
@@ -208,34 +267,89 @@ import { Card } from '@astrojs/starlight/components';
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
+  <section class="fade-in">
     <div class="mb-20 pt-16 border-t border-gray-200 dark:border-gray-700">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-          <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="text-center mb-8 slide-up">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full shadow-lg pulse-glow">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
           </svg>
         </div>
       </div>
-      <h2 class="text-3xl font-bold text-center mb-12">Ce qui rend ce livre unique</h2>
+      <h2 class="text-4xl font-bold text-center mb-4 gradient-text slide-up">Ce qui rend ce livre unique</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto slide-up">
+        Quatre piliers qui font toute la différence pour votre apprentissage
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <Card title="Collaboratif" icon="users">
-          Diversité d'expériences et de contextes grâce à la contribution de plusieurs CTOs.
-        </Card>
-        <Card title="Pratique" icon="file-text">
-          Outils, templates, checklists utilisables immédiatement dans votre quotidien.
-        </Card>
-        <Card title="Humain" icon="heart">
-          Témoignages authentiques et situations réelles vécues par des CTOs expérimentés.
-        </Card>
-        <Card title="Évolutif" icon="zap">
-          Mis à jour avec les retours de la communauté et l'évolution du métier.
-        </Card>
+        <div class="hover-scale">
+          <Card title="🤝 Collaboratif" >
+            <div class="space-y-3">
+              <p class="font-medium text-blue-700 dark:text-blue-300">Multi-perspectives</p>
+              <p>Diversité d'expériences et de contextes grâce à la contribution de plusieurs CTOs expérimentés.</p>
+              <div class="text-xs text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+                Plus de 10 CTOs contributeurs
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="🛠️ Pratique">
+            <div class="space-y-3">
+              <p class="font-medium text-green-700 dark:text-green-300">Actionnable</p>
+              <p>Outils, templates, checklists utilisables immédiatement dans votre quotidien de CTO.</p>
+              <div class="text-xs text-gray-500 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg">
+                8+ templates téléchargeables
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="❤️ Humain">
+            <div class="space-y-3">
+              <p class="font-medium text-purple-700 dark:text-purple-300">Authentique</p>
+              <p>Témoignages authentiques et situations réelles vécues par des CTOs dans le terrain.</p>
+              <div class="text-xs text-gray-500 dark:text-gray-400 bg-purple-50 dark:bg-purple-900/20 p-2 rounded-lg">
+                Stories vraies, sans filtre
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div class="hover-scale">
+          <Card title="🔄 Évolutif">
+            <div class="space-y-3">
+              <p class="font-medium text-orange-700 dark:text-orange-300">Vivant</p>
+              <p>Mis à jour régulièrement avec les retours de la communauté et l'évolution du métier.</p>
+              <div class="text-xs text-gray-500 dark:text-gray-400 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
+                Version 2.0 prévue fin 2025
+              </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
+ <section class="fade-in">
+    <div class="text-center py-16">
+      <div class="max-w-4xl mx-auto">
+        <div class="testimonial-card p-12 rounded-3xl shadow-2xl hover-scale">
+          <div class="mb-6">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full shadow-lg mb-4">
+              <Icon name="mdi:format-quote-close" class="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <blockquote class="text-3xl font-bold text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-purple-600 dark:from-orange-400 dark:via-red-400 dark:to-purple-400 bg-clip-text mb-6 leading-relaxed">
+            "Parce qu'être CTO, ça ne s'improvise pas... mais ça se partage !"
+          </blockquote>
+          <div class="text-lg text-gray-600 dark:text-gray-300 font-medium">
+            — La philosophie de ce livre —
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <div class="mb-20 pt-16 border-t border-gray-200 dark:border-gray-700">
       <div class="text-center mb-8">
         <div class="inline-flex items-center justify-center w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-full">
@@ -246,7 +360,7 @@ import { Card } from '@astrojs/starlight/components';
       </div>
       <h2 class="text-3xl font-bold text-center mb-12">Ressources incluses</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <Card title="Templates de documents" icon="file-text">
+        <Card title="Templates de documents">
           <ul class="space-y-2 text-sm">
             <li>• Vision technique</li>
             <li>• Budget tech</li>
@@ -254,7 +368,7 @@ import { Card } from '@astrojs/starlight/components';
             <li>• Framework de 1-on-1</li>
           </ul>
         </Card>
-        <Card title="Checklists opérationnelles" icon="check-square">
+        <Card title="Checklists opérationnelles">
           <ul class="space-y-2 text-sm">
             <li>• "Suis-je prêt.e à devenir CTO ?"</li>
             <li>• "Mon positionnement est-il clair ?"</li>
@@ -262,7 +376,7 @@ import { Card } from '@astrojs/starlight/components';
             <li>• "Mon organisation scale-t-elle ?"</li>
           </ul>
         </Card>
-        <Card title="Liens et ressources" icon="link">
+        <Card title="Liens et ressources">
           <ul class="space-y-2 text-sm">
             <li>• Outils recommandés</li>
             <li>• Sources de veille</li>
@@ -274,52 +388,45 @@ import { Card } from '@astrojs/starlight/components';
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
-    <div class="text-center bg-gradient-to-r from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900/50 dark:via-blue-900/20 dark:to-purple-900/20 rounded-2xl mb-16 mt-16 border-t border-gray-200 dark:border-gray-700 pt-16 backdrop-blur-sm">
-      <h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
-        Prêt à commencer votre voyage vers le rôle de CTO ?
+  <section class="fade-in">
+    <div class="text-center bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900/30 dark:via-purple-900/30 dark:to-pink-900/30 rounded-3xl mb-16 mt-16 border border-indigo-200 dark:border-indigo-700 pt-20 pb-12 backdrop-blur-sm shadow-2xl">
+      <div class="slide-up mb-8">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full shadow-lg pulse-glow mb-6">
+          <Icon name="mdi:rocket-launch" class="w-10 h-10 text-white" />
+        </div>
+      </div>
+      <h2 class="text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent slide-up">
+        Prêt à devenir CTO ?
       </h2>
-      <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-        Rejoignez la communauté des CTOs bienveillants et commencez votre lecture dès maintenant.
+      <p class="text-xl text-gray-700 dark:text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed slide-up">
+        Rejoignez la communauté des CTOs bienveillants et transformez votre vision en réalité. <br/>
+        <strong>Votre parcours commence maintenant.</strong>
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="preface" class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-lg transition-colors">
-          Commencer la lecture
-          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-        <a href="about" class="inline-flex items-center px-6 py-3 text-base font-medium text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 transition-colors">
-          Découvrir les auteurs
-        </a>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center slide-up">
+        <LinkButton href={`${import.meta.env.BASE_URL}/book/preface/`} class="px-8 py-4 text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:-translate-y-1">
+          🚀 Commencer la lecture <Icon name="mdi:arrow-right" class="w-5 h-5 ml-2" />
+        </LinkButton>
+        <div class="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+          <Icon name="mdi:clock-outline" class="w-4 h-4 mr-1 mt-4" />
+          Lecture estimée : 4-6 heures
+        </div>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto slide-up">
+        <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/60 dark:border-gray-700/60">
+          <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">100%</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Gratuit & Open Source</div>
+        </div>
+        <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/60 dark:border-gray-700/60">
+          <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">5</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Chapitres complets</div>
+        </div>
+        <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/60 dark:border-gray-700/60">
+          <div class="text-2xl font-bold text-pink-600 dark:text-pink-400">8+</div>
+          <div class="text-sm text-gray-600 dark:text-gray-300">Templates & checklists</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
-    <div class="text-center py-12">
-      <blockquote class="text-2xl font-medium italic text-gray-700 dark:text-gray-300 max-w-3xl mx-auto bg-gradient-to-r from-gray-100 to-blue-100 dark:from-gray-800 dark:to-blue-900/20 p-8 rounded-2xl backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-        "Parce qu'être CTO, ça ne s'improvise pas... mais ça se partage !" 😉
-      </blockquote>
-    </div>
-  </section>
+ 
 </main>
-
-<footer class="p-4 md:p-8 lg:p-10 border-t border-gray-200">
-  <div class="mx-auto max-w-screen-xl text-center">
-      <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white no-underline">
-          <Icon name="mdi:book-open-page-variant" class="w-12 h-12 mr-2 my-auto" />
-          Être CTO, un livre écrit par des CTOs pour les CTOs.
-      </a>
-      <p class="my-6 text-gray-500 dark:text-gray-400">Un guide pratique et inspirant écrit par des CTOs expérimentés pour partager leur expérience avec ceux qui aspirent à ce rôle.</p>
-      <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white list-none">
-          <li>
-              <a href="about" class="mr-4 hover:underline md:mr-6 no-underline">A propos</a>
-          </li>
-          <li>
-              <a href="https://github.com/kdelfour/Ebook_To_be_Or_not_to_be_CTO" class="mr-4 hover:underline md:mr-6 no-underline">Contribuer</a>
-          </li>
-      </ul>
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://github.com/kdelfour" class="hover:underline no-underline">Kevin Delfour™</a>. All Rights Reserved.</span>
-  </div>
-</footer>

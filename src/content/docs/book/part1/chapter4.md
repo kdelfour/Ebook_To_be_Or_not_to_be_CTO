@@ -83,16 +83,16 @@ Votre équipe technique, ce sont vos premiers ambassadeurs. S'ils ne comprennent
 
 **Format de présentation qui marche :**
 
-1. **Le problème (5 min)**
+1. **Le problème**
    Où on en est aujourd'hui, pourquoi ça ne marche plus, quels sont les risques.
 
-2. **La vision (10 min)**
+2. **La vision**
    Où on veut aller, à quoi ça ressemble, pourquoi c'est mieux.
 
-3. **Le plan (10 min)**
+3. **Le plan**
    Comment on y va, par étapes, avec des jalons mesurables.
 
-4. **Questions/débat (15 min)**
+4. **Questions/débat**
    Laissez l'équipe réagir, challenger, proposer des améliorations.
 
 **Exemple de pitch interne :**

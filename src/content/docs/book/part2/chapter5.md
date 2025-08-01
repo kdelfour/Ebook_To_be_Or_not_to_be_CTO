@@ -6,7 +6,7 @@ title : Recruter et fidéliser son équipe
 
 Bon, maintenant qu'on a établi que vous êtes CTO et que vous avez une vision, il faut recruter l'équipe qui va l'exécuter. Et là, petit réveil brutal : recruter des développeurs en 2025, c'est comme essayer d'attraper des licornes avec un filet à papillons.
 
-Le marché est tendu, les bons développeurs ont 15 offres par semaine, et tout le monde promet la même chose : "startup innovante, stack moderne, équipe sympa, machine a smoothie". Alors, comment vous démarquez-vous ? Comment vous construisez l'équipe de vos rêves sans y laisser votre santé mentale et votre budget ?
+Le marché est tendu, les bons développeurs ont 15 offres par semaine, et tout le monde promet la même chose : "startup innovante, stack moderne, équipe sympa, machine a smoothie". Alors, comment vous démarquez-vous ? Comment construire l'équipe de vos rêves sans y laisser votre santé mentale et votre budget ?
 
 ## Définir ses besoins vs profils disponibles
 
@@ -132,7 +132,7 @@ Freelances ou prestataires pour les compétences très spécialisées.
 - Remote-friendly, mais on aime se voir à Lyon 2j/semaine
 
 ## Le job concrètement
-- Tu vas architurer notre passage de 100M€ à 1Md€ de volume
+- Tu vas architecturer notre passage de 100M€ à 1Md€ de volume
 - Stack : Node.js/TypeScript, PostgreSQL, Redis, AWS
 - Challenges : latence sub-100ms, sécurité bancaire, compliance
 - Pas de legacy pourri : tout a moins de 3 ans

@@ -1,0 +1,208 @@
+---
+import EditLink from '@astrojs/starlight/components/EditLink.astro';
+import LastUpdated from '@astrojs/starlight/components/LastUpdated.astro';
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+import { Icon } from 'astro-icon/components';
+
+// Fonction pour vérifier si on est sur la page d'accueil
+function isHomePage(pathname: string, baseUrl: string): boolean {
+    return pathname === `${baseUrl}/` || 
+           pathname === baseUrl || 
+           pathname === '/';
+}
+
+---
+
+<footer class="sl-flex">
+    <!-- Navigation et édition -->
+    <Pagination />
+    <div class="flex justify-end"> 
+        {!isHomePage(Astro.url.pathname, import.meta.env.BASE_URL) && (
+            <div class="text-xs"><EditLink /></div>
+        )}
+    </div>
+
+    <!-- Footer principal pour la page d'accueil -->
+    {isHomePage(Astro.url.pathname, import.meta.env.BASE_URL) && (
+        <div class="w-full border-t border-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800 pt-12">
+            <!-- Section principale -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Logo et description -->
+                <div class="md:col-span-2">
+                    <a href={`${import.meta.env.BASE_URL}/book/`} class="flex items-center text-2xl font-bold no-underline mb-6 group transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <Icon name="mdi:book-open-page-variant" class="w-6 h-6 text-white" />
+                        </div>
+                        <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">Être CTO</span>
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                        Un guide pratique et inspirant écrit par des CTOs expérimentés pour partager leur expérience avec ceux qui aspirent à ce rôle. Découvrez les défis, les opportunités et les stratégies pour exceller en tant que Chief Technology Officer [CTO].
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/kdelfour/Ebook_To_be_Or_not_to_be_CTO" class="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:from-indigo-500 hover:to-purple-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                            <Icon name="mdi:github" class="w-5 h-5" />
+                        </a>
+                        <a href="https://linkedin.com/in/kevindelfour" class="w-12 h-12 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:from-blue-500 hover:to-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                            <Icon name="mdi:linkedin" class="w-5 h-5" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-white/60 dark:border-gray-700/60 hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">📚 Navigation</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/introduction/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Introduction
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/part1/chapter1/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Partie 1: Devenir CTO
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/part2/chapter5/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Partie 2: Management et Leadership
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/part3/chapter9/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Partie 3: Stratégie et Techique
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/part4/chapter12/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Partie 4: Opérationnel et Croissance
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/part5/chapter15/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Partie 5: Développement personnel et leadership
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/conclusion/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Conclusion
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ressources -->
+                <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-white/60 dark:border-gray-700/60 hover:shadow-lg transition-all duration-300">
+                    <h3 class="text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent mb-4">🔗 Ressources</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/book/annexes/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Annexes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/kdelfour/Ebook_To_be_Or_not_to_be_CTO" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Contribuer
+                            </a>
+                        </li>
+                        <li>
+                            <a href={`${import.meta.env.BASE_URL}/community/about/`} class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                À propos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/kdelfour/Ebook_To_be_Or_not_to_be_CTO/issues" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors no-underline">
+                                Signaler un problème
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section inférieure -->
+            <div class="border-t border-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800 pt-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                    <!-- Copyright et auteur -->
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-sm">
+                        <span class="text-gray-600 dark:text-gray-300">© 2025 <a href="https://github.com/kdelfour" class="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent no-underline hover:underline">Kevin Delfour™</a>. Tous droits réservés.</span>
+                        <span class="hidden sm:inline text-gray-400">•</span>
+                        <span class="text-gray-500 dark:text-gray-400"><LastUpdated /></span>
+                    </div>
+
+                    <!-- Badge carbone -->
+                    <div class="flex items-center">
+                        <div class="flex items-center bg-green-50 dark:bg-green-900/20 px-4  rounded-full border border-green-200 dark:border-green-800">
+                            <span class="text-sm font-medium text-green-700 dark:text-green-300 mr-2">🌱 Site éco-responsable</span>
+                            <div id="wcb" class="carbonbadge wcb dark:wcb-d mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )}
+
+    <!-- Footer minimal pour les autres pages -->
+    {!isHomePage(Astro.url.pathname, import.meta.env.BASE_URL) && (
+        <div class="w-full border-t border-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 dark:from-indigo-800 dark:via-purple-800 dark:to-pink-800 pt-6 mt-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-xs">
+                <div class="flex items-center justify-center space-x-4">
+                    <a href={`${import.meta.env.BASE_URL}/book/`} class="flex items-center no-underline group transition-all duration-300">
+                        <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-2 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <Icon name="mdi:book-open-page-variant" class="w-4 h-4 text-white" />
+                        </div>
+                        <span class="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Être CTO</span>
+                    </a>
+                    <span class="hidden sm:inline text-gray-400">•</span>
+                    <span class="text-gray-600 dark:text-gray-300">© 2025 <a href="https://github.com/kdelfour" class="font-medium bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent no-underline hover:underline">Kevin Delfour™</a>. Tous droits réservés.</span>
+                </div>
+                <div class="flex items-center bg-green-50 dark:bg-green-900/20 px-3 py-1 rounded-full border border-green-200 dark:border-green-800">
+                    <span class="text-xs font-medium text-green-700 dark:text-green-300">🌱 Site éco-responsable</span>
+                </div>
+            </div>
+        </div>
+    )}
+</footer>
+
+<script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+
+<style>
+	@layer starlight.core {
+		footer {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.meta {
+			gap: 0.75rem 3rem;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 3rem;
+			font-size: var(--sl-text-sm);
+			color: var(--sl-color-gray-3);
+		}
+		.meta > :global(p:only-child) {
+			margin-inline-start: auto;
+		}
+
+		.kudos {
+			align-items: center;
+			gap: 0.5em;
+			margin: 1.5rem auto;
+			font-size: var(--sl-text-xs);
+			text-decoration: none;
+			color: var(--sl-color-gray-3);
+		}
+		.kudos:hover {
+			color: var(--sl-color-white);
+		}
+	}
+
+	@layer starlight.components {
+		.kudos :global(svg) {
+			color: var(--sl-color-orange);
+		}
+	}
+
+	/* Styles personnalisés pour le footer */
+	.carbonbadge {
+		transform: scale(0.8);
+		transform-origin: left center;
+	}
+</style>

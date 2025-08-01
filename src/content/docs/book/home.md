@@ -5,7 +5,7 @@ title : Accueil
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; min-height: 80vh;">
 
   <div style="flex: 1 1 300px; min-width: 250px; max-width: 800px; display: flex;">
-    <img src="/illustrations/cover.png" alt="Couverture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <img src="/Ebook_To_be_Or_not_to_be_CTO/illustrations/cover.png" alt="Couverture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
   </div>
 
   <div style="flex: 2 1 350px; min-width: 250px;">

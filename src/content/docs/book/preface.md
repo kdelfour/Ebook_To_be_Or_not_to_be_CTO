@@ -18,7 +18,7 @@ Ce livre est né de ces échanges. De ces moments où, entre CTOs, on se dit enf
 
 Parce qu'être CTO aujourd'hui, c'est un métier qui évolue trop vite pour qu'une seule personne prétende avoir toutes les réponses. Entre les startups qui doivent scaler rapidement, les scale-ups qui découvrent l'art délicat de l'organisation, et les grands groupes qui tentent leur transformation digitale, les défis sont multiples et les contextes variés.
 
-J'ai eu la chance de traverser ces différents univers : CTO chez Hiveo pendant une fusion-acquisition internationale, directeur associé chez MAX Digital Services où j'ai monté une équipe de 12 personnes avec des méthodes d'holacratie, co-fondateur d'iBubble où j'ai inventé une caméra sous-marine autonome (oui, c'est un sacré pivot depuis le développement web !), et actuellement Founding Engineer chez JOBO Interim où je conçois des architectures intégrant l'IA.
+J'ai eu la chance de traverser ces différents univers : CTO chez Hiveo pendant une fusion-acquisition internationale, directeur associé chez MAX Digital Services où j'ai monté une équipe de 12 personnes avec des méthodes d'holacratie, co-fondateur d'iBubble où j'ai inventé une caméra sous-marine autonome (oui, c'est un sacré pivot depuis le développement web !), et j'étais, récemment,  Founding Engineer chez JOBO Interim où je conçois des architectures intégrant l'IA.
 
 Mais mon expérience seule ne suffit pas. C'est pourquoi j'ai voulu créer ce livre avec d'autres CTOs, pour que vous ayez accès à une diversité d'expériences, de secteurs, de contextes. Parce que la solution qui fonctionne dans une fintech parisienne ne sera peut-être pas la même pour une startup deeptech lyonnaise ou une PME industrielle nantaise.
 
