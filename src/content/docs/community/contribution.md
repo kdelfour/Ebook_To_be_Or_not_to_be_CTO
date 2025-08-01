@@ -5,14 +5,6 @@ description: Découvrez comment contribuer au livre "Être CTO", participer à l
 
 Découvrez comment participer à ce livre collaboratif et enrichir ce guide pour la communauté des CTOs.
 
-## Pourquoi contribuer ?
-
-Ce livre est né d'un constat simple : **devenir CTO, ça ne s'improvise pas**. Trop de développeurs talentueux se retrouvent projetés dans ce rôle sans guide, sans mentor, sans retours d'expérience concrets.
-
-L'idée a germé lors de discussions entre CTOs expérimentés qui partageaient tous le même souhait : **transmettre ce qu'ils auraient aimé savoir** avant de prendre leurs fonctions.
-
-Plutôt que de garder ces connaissances dans des cercles fermés, nous avons décidé de créer une ressource ouverte, collaborative et **100% gratuite**, accessible à tous ceux qui aspirent à ce rôle fascinant.
-
 ## Notre philosophie
 
 ### Bienveillance
