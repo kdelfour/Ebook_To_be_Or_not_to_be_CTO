@@ -246,7 +246,7 @@ Migration progressive : on commence par extraire le module de facturation (ident
 
 **Framework de communication de crise structurée :**
 
-**Princi0pes de communication d'incident :**
+**Principes de communication d'incident :**
 
 **1. Communication interne (première alerte) :**
 - **Clarté :** Impact décrit en termes business, pas techniques
