@@ -265,7 +265,7 @@ Si l'équipe est distribuée, alternez les horaires de meetings.
 **4. Droit à la déconnexion**
 Pas de Slack après 19h, pas d'emails le weekend.
 
-**Mon expérience chez Hiveo :** On était full remote pendant le COVID. La productivité n'a pas baissé mais les cérémonies étaient plus fade. On a réintroduit 1 jour en présentiel en dédiant ce jour aux ateliers, cérémonies ou brainstorming, et nous avions une méilleur participation lors des cérémonies.
+**Mon expérience chez Hiveo :** On était full remote pendant le COVID. La productivité n'a pas baissée mais les cérémonies étaient plus fades. On a réintroduit 1 jour en présentiel en dédiant ce jour aux ateliers, cérémonies ou brainstorming, et nous avions une meilleur participation lors des cérémonies.
 
 ## Code review et qualité
 
