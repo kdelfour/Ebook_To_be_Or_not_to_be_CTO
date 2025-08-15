@@ -186,7 +186,7 @@ Plusieurs déploiements par jour, avec rollback automatique.
 **5. Culture de l'amélioration continue**
 Chaque incident = opportunité d'améliorer le système.
 
-**Mon expérience chez JOBO Interim :** On a migré vers du déploiement continu en 3 mois. Résultat : de 1 déploiement par semaine à 20 par semaine, avec 90% moins d'incidents. La clé : on a commencé par changer les mentalités avant d'installer les outils.
+**Mon expérience chez client X :** On a migré vers du déploiement continu en 3 mois. Résultat : de 1 déploiement par semaine à 20 par semaine, avec 90% moins d'incidents. La clé : on a commencé par changer les mentalités avant d'installer les outils.
 
 ### Le piège de la sur-méthodologie
 
